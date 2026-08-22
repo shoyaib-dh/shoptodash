@@ -33,43 +33,50 @@
 
     body {
       margin: 0; padding: 0;
-      background: #F0F4FF;
+      background: #F4F7FB;
       min-height: 100vh;
       overflow-x: hidden;
       font-family: 'Tiro Bangla', 'Poppins', serif;
     }
 
     #ssa-root {
-      /* ── Color Tokens ── */
-      --bg:          #F0F4FF;
-      --bg2:         #E8EEFF;
-      --bg3:         #F7F9FF;
+      /* ── Color Tokens (Navy / White admin theme) ── */
+      --bg:          #F4F7FB;
+      --bg2:         #EAF1F9;
+      --bg3:         #F5F8FC;
       --card:        #FFFFFF;
       --card-solid:  #FFFFFF;
-      --line:        rgba(99,102,241,0.12);
-      --glass-border:rgba(99,102,241,0.16);
+      --line:        rgba(20,63,110,0.12);
+      --glass-border:rgba(20,63,110,0.10);
 
-      --ink:         #1A1D2E;
-      --ink-soft:    #565D7D;
-      --ink-muted:   #868DAF;
+      --ink:         #12233B;
+      --ink-soft:    #55688A;
+      --ink-muted:   #93A3BE;
 
-      --primary:     #6C63FF;       /* vibrant indigo-violet */
-      --primary-glow:rgba(108,99,255,0.35);
-      --primary-deep:#4A44C4;
+      --primary:        #1D63AD;    /* core navy blue */
+      --primary-glow:   rgba(29,99,173,0.30);
+      --primary-deep:   #123A66;    /* deep navy */
+      --primary-bright: #2F80D8;    /* brighter blue for highlights */
 
-      --accent:      #00D4AA;       /* teal/cyan accent */
-      --accent-soft: rgba(0,212,170,0.15);
+      --sidebar-top:  #1B5EA0;
+      --sidebar-bot:  #0F3562;
 
-      --gold:        #FFD166;
-      --gold-soft:   rgba(255,209,102,0.15);
-      --gold-ink:    #FFD166;
+      --accent:      #12B886;       /* teal/green accent */
+      --accent-soft: rgba(18,184,134,0.15);
 
-      --danger:      #FF4B6B;
-      --danger-soft: rgba(255,75,107,0.15);
+      --gold:        #F39C12;       /* amber/orange */
+      --gold-soft:   rgba(243,156,18,0.15);
+      --gold-ink:    #C9740A;
 
-      --success:     #00D4AA;
+      --purple:      #8B5CF6;
+      --purple-soft: rgba(139,92,246,0.15);
 
-      --glass-shadow: 0 20px 60px -20px rgba(31,41,102,0.14);
+      --danger:      #E5484D;
+      --danger-soft: rgba(229,72,77,0.13);
+
+      --success:     #12B886;
+
+      --glass-shadow: 0 20px 50px -22px rgba(15,53,98,0.20);
 
       font-family: 'Tiro Bangla', 'Poppins', serif;
       font-size: 17.5px;
@@ -93,9 +100,9 @@
       content:'';
       position:fixed; inset:0; pointer-events:none; z-index:0;
       background:
-        radial-gradient(ellipse 60% 50% at 15% 0%,   rgba(108,99,255,.18), transparent),
-        radial-gradient(ellipse 50% 40% at 85% 100%,  rgba(0,212,170,.12), transparent),
-        radial-gradient(ellipse 40% 35% at 50% 50%,   rgba(108,99,255,.05), transparent);
+        radial-gradient(ellipse 60% 50% at 15% 0%,   rgba(29,99,173,.14), transparent),
+        radial-gradient(ellipse 50% 40% at 85% 100%,  rgba(18,184,134,.10), transparent),
+        radial-gradient(ellipse 40% 35% at 50% 50%,   rgba(29,99,173,.04), transparent);
     }
 
     /* ══════════════════════════════════════════
@@ -120,12 +127,12 @@
       text-align: center;
       backdrop-filter: blur(24px) saturate(160%);
       -webkit-backdrop-filter: blur(24px) saturate(160%);
-      box-shadow: var(--glass-shadow), 0 0 0 1px rgba(108,99,255,.1);
+      box-shadow: var(--glass-shadow), 0 0 0 1px rgba(29,99,173,.1);
     }
     .ssa-seal { width: 80px; height: 80px; margin: 0 auto 16px; }
     .ssa-login-card h1 {
       font-size: 26px; margin: 0 0 4px;
-      background: linear-gradient(135deg, #A9A4FF 0%, #6C63FF 50%, #00D4AA 100%);
+      background: linear-gradient(135deg, #2F80D8 0%, #1D63AD 50%, #12B886 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -150,22 +157,22 @@
     .ssa-field select:focus {
       outline: none;
       border-color: var(--primary);
-      background: rgba(108,99,255,.08);
+      background: rgba(29,99,173,.08);
     }
     .ssa-field select option { background: #FFFFFF; color: var(--ink); }
 
     .ssa-login-btn {
       width: 100%; padding: 13px;
       border: none; border-radius: 12px; margin-top: 8px;
-      background: linear-gradient(135deg, #7C74FF 0%, #6C63FF 50%, #4A44C4 100%);
+      background: linear-gradient(135deg, #2F80D8 0%, #1D63AD 50%, #123A66 100%);
       color: #fff; font-weight: 700; font-size: 18px;
       letter-spacing: .03em;
-      box-shadow: 0 8px 24px -6px rgba(108,99,255,.6);
+      box-shadow: 0 8px 24px -6px rgba(29,99,173,.6);
       transition: transform .15s, box-shadow .15s;
     }
     .ssa-login-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px -8px rgba(108,99,255,.75);
+      box-shadow: 0 12px 30px -8px rgba(29,99,173,.75);
     }
     .ssa-login-error { color: var(--danger); font-size: 14.5px; margin-top: 14px; min-height: 16px; }
 
@@ -177,77 +184,90 @@
 
     /* ── Sidebar ── */
     .ssa-sidebar {
-      width: 250px;
+      width: 254px;
       flex-shrink: 0;
-      background: linear-gradient(175deg, #FFFFFF 0%, #F6F7FE 60%, #F0F2FC 100%);
-      border-right: 1px solid var(--line);
-      padding: 24px 14px;
+      background: linear-gradient(190deg, var(--sidebar-top) 0%, var(--sidebar-bot) 100%);
+      padding: 22px 14px;
       display: flex;
       flex-direction: column;
       z-index: 10;
       position: relative;
+      box-shadow: 4px 0 24px -8px rgba(15,53,98,.35);
     }
     .ssa-sidebar::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 200px;
+      position: absolute; top: 0; left: 0; right: 0; height: 220px;
       pointer-events: none;
-      background: radial-gradient(ellipse 80% 60% at 40% 0%, rgba(108,99,255,.20), transparent);
+      background: radial-gradient(ellipse 80% 60% at 40% 0%, rgba(255,255,255,.10), transparent);
     }
     .ssa-brand {
       display: flex; align-items: center; gap: 11px;
-      margin-bottom: 32px; padding: 0 6px;
+      margin-bottom: 30px; padding: 4px 8px 18px;
       position: relative;
+      border-bottom: 1px solid rgba(255,255,255,.14);
     }
-    .ssa-brand svg { width: 36px; height: 36px; flex-shrink: 0; }
+    .ssa-brand svg { width: 34px; height: 34px; flex-shrink: 0; }
     .ssa-brand-text {
-      font-size: 16.5px; line-height: 1.3; font-weight: 700;
-      background: linear-gradient(135deg, #7C74FF, #4A44C4);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 17px; line-height: 1.3; font-weight: 700;
+      color: #FFFFFF;
     }
+    .ssa-brand-sub { font-size: 12px; color: rgba(255,255,255,.62); font-weight: 500; margin-top: 1px; }
 
     .ssa-nav { display: flex; flex-direction: column; gap: 4px; position: relative; }
     .ssa-nav button {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 12px;
       width: 100%; text-align: left;
       padding: 11px 14px;
       border: none;
       background: transparent;
-      color: var(--ink-soft);
+      color: rgba(255,255,255,.72);
       border-radius: 10px;
-      font-size: 16.5px;
+      font-size: 15.5px;
       transition: all .2s;
       position: relative;
     }
-    .ssa-nav button:hover { background: rgba(108,99,255,.10); color: var(--ink); }
+    .ssa-nav button svg { width: 19px; height: 19px; flex-shrink: 0; opacity: .9; }
+    .ssa-nav button:hover { background: rgba(255,255,255,.08); color: #fff; }
     .ssa-nav button.active {
-      background: linear-gradient(90deg, rgba(108,99,255,.16), rgba(108,99,255,.06));
-      color: var(--primary-deep);
+      background: rgba(255,255,255,.16);
+      color: #fff;
       font-weight: 600;
-      border-left: 3px solid var(--primary);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
     }
 
     .ssa-user-info {
       margin-top: auto;
-      font-size: 14.5px;
-      color: var(--ink-muted);
-      padding: 14px 12px 10px;
-      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      padding: 14px 10px 10px;
+      border-top: 1px solid rgba(255,255,255,.14);
       margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .ssa-user-info strong { display: block; color: var(--ink-soft); font-weight: 600; margin-bottom: 2px; }
+    .ssa-user-info .ssa-user-avatar {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,255,255,.16);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 14px;
+    }
+    .ssa-user-info strong { display: block; color: #fff; font-weight: 600; margin-bottom: 1px; font-size: 14.5px; }
 
     .ssa-logout {
-      background: rgba(255,75,107,.08);
-      border: 1px solid rgba(255,75,107,.20);
+      background: rgba(229,72,77,.16);
+      border: 1px solid rgba(229,72,77,.30);
       border-radius: 10px;
       padding: 10px;
       font-size: 14.5px;
-      color: var(--danger);
+      color: #FFD7D9;
+      font-weight: 600;
       transition: all .2s;
       position: relative;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .ssa-logout:hover { background: rgba(255,75,107,.16); }
+    .ssa-logout svg { width: 16px; height: 16px; }
+    .ssa-logout:hover { background: rgba(229,72,77,.26); }
 
     /* ── Main Content ── */
     .ssa-main {
@@ -256,7 +276,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       background:
-        radial-gradient(ellipse 50% 40% at 80% 10%, rgba(108,99,255,.07), transparent),
+        radial-gradient(ellipse 50% 40% at 80% 10%, rgba(29,99,173,.05), transparent),
         var(--bg);
       height: 100%;
     }
@@ -264,42 +284,34 @@
     .ssa-page-sub { color: var(--ink-soft); font-size: 15.5px; margin: 0 0 24px; }
 
     /* ── Stat Cards ── */
-    .ssa-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .ssa-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
     .ssa-stat {
       background: var(--card);
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      padding: 22px;
+      padding: 20px 22px;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 4px 24px -8px rgba(31,41,102,0.10);
+      box-shadow: 0 4px 20px -10px rgba(15,53,98,0.12);
       transition: transform .2s, box-shadow .2s;
     }
-    .ssa-stat:hover { transform: translateY(-2px); box-shadow: 0 8px 32px -8px rgba(31,41,102,0.16); }
-    .ssa-stat::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-      background: linear-gradient(to bottom, var(--primary), var(--accent));
-      border-radius: 2px;
+    .ssa-stat:hover { transform: translateY(-2px); box-shadow: 0 10px 28px -10px rgba(15,53,98,0.18); }
+    .ssa-stat-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--primary-glow);
+      color: var(--primary);
+      margin-bottom: 14px;
     }
-    .ssa-stat.warn::before { background: linear-gradient(to bottom, var(--danger), #FF8F70); }
-    .ssa-stat::after {
-      content: '';
-      position: absolute; top: 0; right: 0;
-      width: 80px; height: 80px;
-      background: radial-gradient(circle, var(--primary-glow), transparent 70%);
-      border-radius: 50%;
-      transform: translate(30%, -30%);
-    }
-    .ssa-stat.warn::after { background: radial-gradient(circle, rgba(255,75,107,.2), transparent 70%); }
-    .ssa-stat-label { font-size: 14px; color: var(--ink-soft); margin-bottom: 8px; font-weight: 500; position: relative; z-index: 1; }
+    .ssa-stat-icon svg { width: 21px; height: 21px; }
+    .ssa-stat.warn .ssa-stat-icon { background: var(--danger-soft); color: var(--danger); }
+    .ssa-stat-label { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 6px; font-weight: 500; position: relative; z-index: 1; }
     .ssa-stat-value {
-      font-size: 28px; font-weight: 700; color: var(--ink);
+      font-size: 24px; font-weight: 700; color: var(--ink);
       font-family: 'Tiro Bangla','Poppins',serif;
       position: relative; z-index: 1;
     }
+    .ssa-stat.warn .ssa-stat-value { color: var(--danger); }
 
     /* ── Buttons ── */
     .ssa-btn {
@@ -308,30 +320,31 @@
       transition: all .2s;
       display: inline-flex; align-items: center; justify-content: center; gap: 7px;
     }
+    .ssa-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
     .ssa-btn-primary {
-      background: linear-gradient(135deg, #7C74FF, #6C63FF);
+      background: linear-gradient(135deg, #2F80D8, #1D63AD);
       color: #fff;
-      box-shadow: 0 4px 14px -4px rgba(108,99,255,.6);
+      box-shadow: 0 4px 14px -4px rgba(29,99,173,.6);
     }
-    .ssa-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -4px rgba(108,99,255,.7); }
+    .ssa-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -4px rgba(29,99,173,.7); }
     .ssa-btn-ghost {
       background: var(--bg3);
       border: 1px solid var(--line);
       color: var(--ink-soft);
     }
-    .ssa-btn-ghost:hover { background: rgba(108,99,255,.08); color: var(--ink); }
+    .ssa-btn-ghost:hover { background: rgba(29,99,173,.08); color: var(--ink); }
     .ssa-btn-gold {
       background: var(--gold-soft);
       color: var(--gold-ink);
-      border: 1px solid rgba(255,209,102,.25);
+      border: 1px solid rgba(243,156,18,.25);
     }
-    .ssa-btn-gold:hover { background: rgba(255,209,102,.25); }
+    .ssa-btn-gold:hover { background: rgba(243,156,18,.25); }
     .ssa-btn-danger {
       background: var(--danger-soft);
       color: var(--danger);
-      border: 1px solid rgba(255,75,107,.2);
+      border: 1px solid rgba(229,72,77,.2);
     }
-    .ssa-btn-danger:hover { background: rgba(255,75,107,.22); }
+    .ssa-btn-danger:hover { background: rgba(229,72,77,.22); }
     .ssa-btn-sm { padding: 6px 12px; font-size: 14.5px; border-radius: 8px; }
     .ssa-btn-clickable-pill { cursor: pointer; border: none; font-family: inherit; transition: all .2s; }
     .ssa-btn-clickable-pill:hover { transform: scale(1.05); }
@@ -349,9 +362,12 @@
       transition: border .2s;
     }
     .ssa-search::before {
-      content: '🔍';
+      content: '';
       position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-      font-size: 14px; pointer-events: none; opacity: .5;
+      width: 16px; height: 16px; pointer-events: none; opacity: .5;
+      background: var(--ink-soft);
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>') center/contain no-repeat;
+      mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>') center/contain no-repeat;
     }
     .ssa-search input:focus { outline: none; border-color: var(--primary); }
 
@@ -368,7 +384,7 @@
     table.ssa-table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 16px; }
     table.ssa-table th {
       text-align: left;
-      background: rgba(108,99,255,.10);
+      background: rgba(29,99,173,.10);
       color: var(--primary-deep);
       font-weight: 600;
       padding: 13px 16px;
@@ -383,7 +399,7 @@
       vertical-align: middle;
       color: var(--ink);
     }
-    table.ssa-table tr:hover td { background: rgba(108,99,255,.05); }
+    table.ssa-table tr:hover td { background: rgba(29,99,173,.05); }
 
     .ssa-avatar {
       width: 38px; height: 38px; border-radius: 50%;
@@ -392,8 +408,8 @@
       border: 2px solid var(--line);
     }
     .ssa-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; white-space: nowrap; }
-    .ssa-pill.gold { background: var(--gold-soft); color: var(--gold-ink); border: 1px solid rgba(255,209,102,.2); }
-    .ssa-pill.brick { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(255,75,107,.2); }
+    .ssa-pill.gold { background: var(--gold-soft); color: var(--gold-ink); border: 1px solid rgba(243,156,18,.2); }
+    .ssa-pill.brick { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(229,72,77,.2); }
     .ssa-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
     /* ── Modals ── */
@@ -414,12 +430,12 @@
       padding: 32px;
       max-height: 90vh;
       overflow: auto;
-      box-shadow: 0 30px 80px -20px rgba(31,41,102,0.22), 0 0 0 1px rgba(108,99,255,.10);
+      box-shadow: 0 30px 80px -20px rgba(31,41,102,0.22), 0 0 0 1px rgba(29,99,173,.10);
     }
     .ssa-modal h3 {
       margin: 0 0 22px;
       font-size: 21px;
-      background: linear-gradient(135deg, #7C74FF, #4A44C4);
+      background: linear-gradient(135deg, #2F80D8, #123A66);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -462,7 +478,7 @@
       color: var(--ink-soft);
       transition: all .2s;
     }
-    .ssa-page-btn:hover { background: rgba(108,99,255,.12); color: var(--ink); border-color: var(--primary); }
+    .ssa-page-btn:hover { background: rgba(29,99,173,.12); color: var(--ink); border-color: var(--primary); }
     .ssa-page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
     /* ── Photo Upload ── */
@@ -487,64 +503,105 @@
 
     /* ── Loading/Empty ── */
     .ssa-empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); font-size: 17px; }
+    .ssa-empty svg { width: 34px; height: 34px; display: block; margin: 0 auto 10px; color: var(--accent); }
     .ssa-loading { text-align: center; padding: 60px; color: var(--ink-soft); font-size: 17px; }
 
     #ssa-print-zone { position: fixed; left: -9999px; top: 0; }
 
     /* ══════════════════════════════════════════
-       ID CARD (PDF — white background)
+       ID CARD — Landscape, Driving-License style
     ══════════════════════════════════════════ */
     .ssa-idcard-tpl {
-      width: 340px; background: #fff; border-radius: 26px;
-      font-family: 'Tiro Bangla','Poppins',serif; overflow: hidden;
-      box-shadow: 0 22px 46px -22px rgba(0,0,0,.5);
-    }
-    .idcard-top {
-      position: relative; height: 118px;
-      background: linear-gradient(135deg, #6C63FF 0%, #4A44C4 100%);
-      border-bottom-left-radius: 60% 42px; border-bottom-right-radius: 60% 42px;
-    }
-    .idcard-top svg { width: 30px; height: 30px; position: absolute; top: 16px; left: 20px; }
-    .idcard-photo-ring {
-      width: 112px; height: 112px; border-radius: 50%;
-      background: #fff; padding: 5px;
-      margin: 0 auto; position: relative; top: -56px;
-      box-shadow: 0 6px 18px -4px rgba(0,0,0,.35);
+      width: 560px; height: 348px;
+      background: #FDFEFF;
+      border-radius: 18px;
+      font-family: 'Tiro Bangla','Poppins',serif;
       overflow: hidden;
+      position: relative;
+      display: flex; flex-direction: column;
+      border: 1px solid rgba(18,58,102,.14);
+      box-shadow: 0 26px 54px -22px rgba(15,53,98,.45);
     }
-    .idcard-photo { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #E8EAF6; display: block; }
-    .idcard-body { margin-top: -40px; padding: 0 26px 8px; text-align: center; }
-    .idcard-name { font-size: 21px; font-weight: 700; color: #1A1A2E; }
-    .idcard-sub { font-size: 12.5px; color: #6C63FF; font-weight: 600; letter-spacing: .04em; margin-top: 2px; }
-    .idcard-divider { height: 1px; background: #E0E0EE; margin: 18px 24px; }
-    .idcard-details { padding: 0 26px; text-align: left; }
-    .idcard-details .row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 13.5px; border-bottom: 1px dashed #E0E0EE; }
-    .idcard-details .row:last-child { border-bottom: none; }
-    .idcard-details .k { color: #888; }
-    .idcard-details .v { font-weight: 700; color: #1A1A2E; }
-    .idcard-bottom {
-      margin-top: 14px; height: 46px;
-      background: linear-gradient(135deg, #6C63FF, #4A44C4);
-      border-top-left-radius: 60% 30px; border-top-right-radius: 60% 30px;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 11.5px; text-align: center; padding: 0 16px;
+    /* faint security watermark pattern behind everything */
+    .ssa-idcard-tpl::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(29,99,173,.05) 1.4px, transparent 1.4px);
+      background-size: 13px 13px;
+    }
+    .ssa-idcard-tpl::after {
+      content: '';
+      position: absolute; right: -60px; bottom: -60px; z-index: 0; pointer-events: none;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,99,173,.06), transparent 70%);
+    }
+
+    .idcard-header {
+      position: relative; z-index: 1; flex-shrink: 0;
+      height: 62px;
+      background: linear-gradient(115deg, #1D63AD 0%, #123A66 100%);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 22px;
+    }
+    .idcard-header-left { display: flex; align-items: center; gap: 11px; min-width: 0; }
+    .idcard-header-left svg { width: 32px; height: 32px; flex-shrink: 0; }
+    .idcard-org { color: #fff; font-weight: 700; font-size: 16.5px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .idcard-org-sub { color: rgba(255,255,255,.72); font-size: 10.5px; margin-top: 1px; }
+    .idcard-header-right { text-align: right; flex-shrink: 0; padding-left: 10px; }
+    .idcard-card-type { color: #fff; font-weight: 700; font-size: 12.5px; letter-spacing: .03em; }
+    .idcard-card-type-en { color: rgba(255,255,255,.68); font-size: 9px; letter-spacing: .14em; font-family: 'Poppins', sans-serif; margin-top: 1px; }
+
+    .idcard-body-land { position: relative; z-index: 1; flex: 1; display: flex; gap: 22px; padding: 20px 24px 10px; }
+
+    .idcard-photo-col { flex-shrink: 0; width: 118px; display: flex; flex-direction: column; align-items: center; }
+    .idcard-photo-frame {
+      width: 112px; height: 132px; border-radius: 10px;
+      padding: 3px; background: linear-gradient(135deg, #1D63AD, #123A66);
+      box-shadow: 0 8px 18px -6px rgba(15,53,98,.4);
+    }
+    .idcard-photo { width: 100%; height: 100%; border-radius: 7px; object-fit: cover; background: #EAF1F9; display: block; }
+    .idcard-memberno-chip {
+      margin-top: 9px; background: var(--gold); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+      letter-spacing: .02em; font-family: 'Poppins', sans-serif; white-space: nowrap;
+    }
+
+    .idcard-info-col { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+    .idcard-name-land { font-size: 21px; font-weight: 700; color: #12233B; line-height: 1.2; }
+    .idcard-name-sub { font-size: 11px; color: #1D63AD; font-weight: 600; letter-spacing: .05em; margin-top: 2px; margin-bottom: 14px; text-transform: uppercase; font-family: 'Poppins', sans-serif; }
+    .idcard-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 20px; }
+    .idcard-field .k { font-size: 9.5px; color: #8CA0BC; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; margin-bottom: 3px; font-family: 'Poppins', sans-serif; }
+    .idcard-field .v { font-size: 15px; font-weight: 700; color: #12233B; }
+
+    .idcard-footer-land {
+      position: relative; z-index: 1; flex-shrink: 0;
+      height: 44px; background: #EEF4FA;
+      border-top: 1px dashed rgba(18,58,102,.20);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+    }
+    .idcard-issue { font-size: 10px; color: #55688A; }
+    .idcard-barcode {
+      width: 128px; height: 22px;
+      background: repeating-linear-gradient(90deg, #12233B 0 2px, transparent 2px 5px);
+      opacity: .82;
     }
 
     /* ── PDF Statement ── */
     .ssa-stmt-tpl { width: 794px; min-height: 1123px; background: #fff; padding: 60px 56px; font-family: 'Tiro Bangla','Poppins',serif; color: #111; }
-    .ssa-stmt-head { display: flex; align-items: center; gap: 16px; border-bottom: 3px solid #6C63FF; padding-bottom: 18px; margin-bottom: 22px; }
+    .ssa-stmt-head { display: flex; align-items: center; gap: 16px; border-bottom: 3px solid #1D63AD; padding-bottom: 18px; margin-bottom: 22px; }
     .ssa-stmt-head svg { width: 52px; height: 52px; }
-    .ssa-stmt-head .t1 { font-size: 25.5px; color: #4A44C4; font-weight: 700; }
+    .ssa-stmt-head .t1 { font-size: 25.5px; color: #123A66; font-weight: 700; }
     .ssa-stmt-head .t2 { font-size: 14.5px; color: #666; }
-    .ssa-stmt-title { font-size: 19.5px; margin: 18px 0 6px; color: #4A44C4; font-weight: 700; }
+    .ssa-stmt-title { font-size: 19.5px; margin: 18px 0 6px; color: #123A66; font-weight: 700; }
     .ssa-stmt-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; font-size: 15.5px; margin-bottom: 22px; color: #333; }
     .ssa-stmt-meta .k { color: #666; }
     table.ssa-stmt-table { width: 100%; border-collapse: collapse; font-size: 15px; color: #333; }
-    table.ssa-stmt-table th { background: #EBEBFF; color: #4A44C4; text-align: left; padding: 9px 12px; border: 1px solid #D0D0EE; font-weight: 600; }
-    table.ssa-stmt-table td { padding: 8px 12px; border: 1px solid #D0D0EE; }
+    table.ssa-stmt-table th { background: #E7F0FA; color: #123A66; text-align: left; padding: 9px 12px; border: 1px solid #CFE0F0; font-weight: 600; }
+    table.ssa-stmt-table td { padding: 8px 12px; border: 1px solid #CFE0F0; }
     .ssa-stmt-summary { margin-top: 18px; margin-left: auto; width: 280px; font-size: 15.5px; color: #333; }
-    .ssa-stmt-summary div { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #D0D0EE; }
-    .ssa-stmt-summary .total { font-weight: 700; color: #4A44C4; font-size: 17px; border-bottom: none; }
+    .ssa-stmt-summary div { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #CFE0F0; }
+    .ssa-stmt-summary .total { font-weight: 700; color: #123A66; font-size: 17px; border-bottom: none; }
     .ssa-stmt-foot { margin-top: 40px; font-size: 12.5px; color: #888; text-align: center; }
 
     /* ══════════════════════════════════════════
@@ -572,12 +629,12 @@
         align-items: center;
         padding: 10px 16px;
         flex-shrink: 0;
-        background: linear-gradient(90deg, #FFFFFF, #F5F6FE) !important;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
+        background: linear-gradient(100deg, var(--sidebar-top), var(--sidebar-bot)) !important;
+        border-bottom: none;
+        box-shadow: 0 4px 16px -8px rgba(15,53,98,.35);
       }
       .ssa-sidebar::before { display: none; }
-      .ssa-brand { margin-bottom: 0; }
+      .ssa-brand { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
       .ssa-brand-text { font-size: 15px; }
       .ssa-user-info { display: none; }
 
@@ -607,7 +664,7 @@
       }
       .ssa-nav button span { display: block; font-size: 10.5px; margin-top: 3px; font-weight: 600; }
       .ssa-nav button.active {
-        background: rgba(108,99,255,.15);
+        background: rgba(29,99,173,.15);
         color: var(--primary);
       }
 
@@ -652,6 +709,9 @@
       .ssa-modal h3 { font-size: 18px; margin-bottom: 16px; }
       .ssa-modal-actions { flex-direction: column-reverse; gap: 10px; }
       .ssa-modal-actions .ssa-btn { width: 100%; justify-content: center; }
+
+      /* ID card scales to fit narrow screens */
+      #ssa-profile-card-holder { transform: scale(0.72); transform-origin: top center; margin-bottom: -90px; }
     }
 
     @media (max-width: 480px) {
@@ -660,6 +720,7 @@
       table.ssa-table th, table.ssa-table td { padding: 10px 10px; font-size: 13.5px; }
       .ssa-actions { gap: 5px; }
       .ssa-btn-sm { padding: 5px 9px; font-size: 12.5px; }
+      #ssa-profile-card-holder { transform: scale(0.58); margin-bottom: -146px; }
     }
   </style>
 </head>
@@ -673,6 +734,26 @@
   var ORG_NAME = 'সপ্তদশ সহযাত্রা';
   var ORG_SUB  = 'সঞ্চয় ব্যবস্থাপনা';
   var ITEMS_PER_PAGE = 10;
+
+  // ============== ICON SET (line icons, replace emoji) ==============
+  var ICON = {
+    dashboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>',
+    members:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+    due:       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>',
+    users:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>',
+    eye:       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>',
+    pdf:       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 15h6"></path><path d="M9 18h4"></path></svg>',
+    mail:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6l-10 7L2 6"></path></svg>',
+    search:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>',
+    check:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>',
+    wallet:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"></path><path d="M16 12h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a2 2 0 0 1 0-4z"></path></svg>',
+    receipt:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2h16v20l-3-2-2 2-2-2-2 2-2-2-2 2-3-2z"></path><path d="M8 8h8M8 12h8M8 16h5"></path></svg>',
+    alert:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>',
+    logout:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="M16 17l5-5-5-5"></path><path d="M21 12H9"></path></svg>',
+    celebrate: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3L2 22l10.7-3.79"></path><path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01"></path><path d="M22 2L2 22"></path></svg>',
+    phone:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+    idcard:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2.5"></rect><circle cx="8" cy="11" r="2.4"></circle><path d="M4.5 17c.6-2 2-3 3.5-3s2.9 1 3.5 3"></path><path d="M14.5 9h5M14.5 12.5h5M14.5 16h3.5"></path></svg>'
+  };
   // Firebase দিয়ে ডাটা পরিচালনা করা হচ্ছে (নিচে ফায়ারবেস init ব্লক দেখুন)
   var db = firebase.firestore();
   var auth = firebase.auth();
@@ -713,11 +794,11 @@
   }
 
   var SEAL_SVG = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">' +
-    '<defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C74FF"/><stop offset="100%" style="stop-color:#00D4AA"/></linearGradient></defs>' +
+    '<defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2F80D8"/><stop offset="100%" style="stop-color:#12B886"/></linearGradient></defs>' +
     '<circle cx="50" cy="50" r="47" fill="none" stroke="url(#sg)" stroke-width="2.5"/>' +
     '<circle cx="50" cy="50" r="39" fill="none" stroke="url(#sg)" stroke-width="1"/>' +
-    '<circle cx="50" cy="50" r="34" fill="rgba(108,99,255,0.15)"/>' +
-    '<text x="50" y="59" text-anchor="middle" font-family="Tiro Bangla, serif" font-size="30" fill="#7C74FF">সস</text>' +
+    '<circle cx="50" cy="50" r="34" fill="rgba(29,99,173,0.15)"/>' +
+    '<text x="50" y="59" text-anchor="middle" font-family="Tiro Bangla, serif" font-size="30" fill="#2F80D8">সস</text>' +
     '</svg>';
     
   var FALLBACK_AVATAR = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%236C63FF%22%3E%3Cpath%20d%3D%22M12%2012c2.21%200%204-1.79%204-4s-1.79-4-4-4-4%201.79-4%204%201.79%204%204%204zm0%202c-2.67%200-8%201.34-8%204v2h16v-2c0-2.66-5.33-4-8-4z%22%2F%3E%3C%2Fsvg%3E';
@@ -1129,16 +1210,19 @@
           '<div class="ssa-brand">' + SEAL_SVG.replace('viewBox="0 0 100 100"','viewBox="0 0 100 100" width="34" height="34"') +
             '<div class="ssa-brand-text">' + ORG_NAME + '</div></div>' +
           '<div class="ssa-nav">' +
-            '<button data-page="dashboard" class="active">🏠 <span>ড্যাশবোর্ড</span></button>' +
-            '<button data-page="members">👥 <span>সদস্যগণ</span></button>' +
-            '<button data-page="due">⏰ <span>বকেয়া</span></button>' +
-            (isAdmin() ? '<button data-page="users">🔑 <span>ইউজার</span></button>' : '') +
+            '<button data-page="dashboard" class="active">' + ICON.dashboard + ' <span>ড্যাশবোর্ড</span></button>' +
+            '<button data-page="members">' + ICON.members + ' <span>সদস্যগণ</span></button>' +
+            '<button data-page="due">' + ICON.due + ' <span>বকেয়া</span></button>' +
+            (isAdmin() ? '<button data-page="users">' + ICON.users + ' <span>ইউজার</span></button>' : '') +
           '</div>' +
           '<div class="ssa-user-info">' +
-            '<strong>' + esc(state.auth ? state.auth.name : '') + '</strong>' +
-            '<span>' + (isAdmin() ? '🔑 এডমিন' : '👁 রিড-অনলি') + '</span>' +
+            '<div class="ssa-user-avatar">' + esc((state.auth && state.auth.name ? state.auth.name.charAt(0) : 'A')) + '</div>' +
+            '<div style="min-width:0;">' +
+              '<strong>' + esc(state.auth ? state.auth.name : '') + '</strong>' +
+              '<span>' + (isAdmin() ? 'এডমিন' : 'রিড-অনলি') + '</span>' +
+            '</div>' +
           '</div>' +
-          '<button class="ssa-logout" id="ssa-logout-btn">লগ-আউট</button>' +
+          '<button class="ssa-logout" id="ssa-logout-btn">' + ICON.logout + ' লগ-আউট</button>' +
         '</div>' +
         '<div class="ssa-main" id="ssa-main"></div>' +
       '</div></div>' +
@@ -1287,21 +1371,21 @@
       '<h2 class="ssa-page-title">ড্যাশবোর্ড</h2>' +
       '<p class="ssa-page-sub">আজকের তারিখ: ' + todayStr + ' &nbsp;•&nbsp; কিস্তির মাস: ' + monthStr + '</p>' +
       '<div class="ssa-stats">' +
-        stat('মোট উত্তোলিত টাকা', '৳ ' + money(d.totalCollected)) +
-        stat('মোট জরিমানা আদায়', '৳ ' + money(d.totalFineCollected)) +
-        stat('মোট বকেয়া (জরিমানাসহ)', '৳ ' + money(d.duesAmount + d.duesFine), true) +
-        stat('বকেয়া সদস্য সংখ্যা', money(d.duesCount), true) +
+        stat('মোট উত্তোলিত টাকা', '৳ ' + money(d.totalCollected), false, ICON.wallet) +
+        stat('মোট জরিমানা আদায়', '৳ ' + money(d.totalFineCollected), false, ICON.receipt) +
+        stat('মোট বকেয়া (জরিমানাসহ)', '৳ ' + money(d.duesAmount + d.duesFine), true, ICON.alert) +
+        stat('বকেয়া সদস্য সংখ্যা', money(d.duesCount), true, ICON.members) +
       '</div>' +
       '<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px;">' +
-      '<button class="ssa-btn ssa-btn-gold" id="ssa-dash-report">📄 মাসিক প্রতিবেদন ডাউনলোড (PDF)</button>' +
-      (isAdmin() ? '<button class="ssa-btn ssa-btn-ghost" id="ssa-dash-email">✉️ ইমেইল রিপোর্ট পাঠান</button>' : '') +
+      '<button class="ssa-btn ssa-btn-gold" id="ssa-dash-report">' + ICON.pdf + ' মাসিক প্রতিবেদন ডাউনলোড (PDF)</button>' +
+      (isAdmin() ? '<button class="ssa-btn ssa-btn-ghost" id="ssa-dash-email">' + ICON.mail + ' ইমেইল রিপোর্ট পাঠান</button>' : '') +
       '</div>' +
       '<h3 class="ssa-page-title" style="font-size:19px;">বকেয়া সদস্য তালিকা</h3>' +
       '<p class="ssa-page-sub">' + due.length + ' জন সদস্যের জরিমানাসহ মোট ৳' + money(totalDue) + ' বকেয়া রয়েছে</p>' +
       '<div class="ssa-table-wrap">' +
         (due.length ?
         '<table class="ssa-table" style="min-width:520px;"><thead><tr><th>নাম</th><th>সদস্য নং</th><th>মোবাইল</th><th>মোট বকেয়া</th></tr></thead><tbody>' + dueRows + '</tbody></table>'
-        : '<div class="ssa-empty">🎉 কোনো বকেয়া নেই — সবাই সঠিকভাবে কিস্তি জমা দিচ্ছেন</div>') +
+        : '<div class="ssa-empty">' + ICON.celebrate + ' কোনো বকেয়া নেই — সবাই সঠিকভাবে কিস্তি জমা দিচ্ছেন</div>') +
       '</div>' +
       renderPagination(due.length, currentPage, 'dashDue');
 
@@ -1319,8 +1403,10 @@
     
     bindDueClicks();
   }
-  function stat(label, val, warn) {
-    return '<div class="ssa-stat' + (warn ? ' warn' : '') + '"><div class="ssa-stat-label">' + label + '</div><div class="ssa-stat-value">' + val + '</div></div>';
+  function stat(label, val, warn, icon) {
+    return '<div class="ssa-stat' + (warn ? ' warn' : '') + '">' +
+      (icon ? '<div class="ssa-stat-icon">' + icon + '</div>' : '') +
+      '<div class="ssa-stat-label">' + label + '</div><div class="ssa-stat-value">' + val + '</div></div>';
   }
 
   function renderMembers(filter) {
@@ -1433,7 +1519,7 @@
       '<div class="ssa-table-wrap">' +
         (list.length ?
         '<table class="ssa-table"><thead><tr><th>ক্রমিক</th><th></th><th>নাম</th><th>সদস্য নং</th><th>মোবাইল</th><th>বকেয়া</th><th>কার্যক্রম</th></tr></thead><tbody>' + rows + '</tbody></table>'
-        : '<div class="ssa-empty">🎉 কোনো বকেয়া নেই — সবাই সঠিকভাবে কিস্তি জমা দিচ্ছেন</div>') +
+        : '<div class="ssa-empty">' + ICON.celebrate + ' কোনো বকেয়া নেই — সবাই সঠিকভাবে কিস্তি জমা দিচ্ছেন</div>') +
       '</div>' +
       renderPagination(list.length, currentPage, 'due');
 
@@ -1550,7 +1636,7 @@
         '<div id="stmt-content-area"><div class="ssa-loading">লোড হচ্ছে...</div></div>' +
         '<div class="ssa-modal-actions">' +
           '<button type="button" class="ssa-btn ssa-btn-ghost" data-close>বন্ধ করুন</button>' +
-          '<button type="button" class="ssa-btn ssa-btn-gold" id="stmt-download-btn">📄 স্টেটমেন্ট ডাউনলোড (PDF)</button>' +
+          '<button type="button" class="ssa-btn ssa-btn-gold" id="stmt-download-btn">' + ICON.pdf + ' স্টেটমেন্ট ডাউনলোড (PDF)</button>' +
         '</div>' +
       '</div></div>' +
       
@@ -1589,11 +1675,11 @@
         '</form>' +
       '</div></div>' +
 
-      '<div class="ssa-overlay" id="ssa-profile-overlay"><div class="ssa-modal" style="max-width:380px; padding:20px; text-align:center;">' +
-        '<div id="ssa-profile-card-holder" style="display:flex; justify-content:center;"></div>' +
+      '<div class="ssa-overlay" id="ssa-profile-overlay"><div class="ssa-modal" style="max-width:610px; padding:22px; text-align:center;">' +
+        '<div id="ssa-profile-card-holder" style="display:flex; justify-content:center; overflow-x:auto; padding:2px;"></div>' +
         '<div class="ssa-modal-actions" style="justify-content:center;">' +
           '<button type="button" class="ssa-btn ssa-btn-ghost" data-close>বন্ধ করুন</button>' +
-          '<button type="button" class="ssa-btn ssa-btn-gold" id="ssa-profile-download-btn">📄 আইডি কার্ড ডাউনলোড</button>' +
+          '<button type="button" class="ssa-btn ssa-btn-gold" id="ssa-profile-download-btn">' + ICON.pdf + ' আইডি কার্ড ডাউনলোড</button>' +
         '</div>' +
       '</div></div>' +
 
@@ -2139,24 +2225,42 @@
   function buildIdCardHtml(m, idAttr) {
     var photo = getMemberPhoto(m);
     var imgSrc = photo ? esc(photo) : FALLBACK_AVATAR;
-    
+    var sealSmall = SEAL_SVG.replace('viewBox="0 0 100 100"', 'viewBox="0 0 100 100" width="32" height="32"');
+
     return (
       '<div class="ssa-idcard-tpl"' + (idAttr ? ' id="' + idAttr + '"' : '') + '>' +
-        '<div class="idcard-top"></div>' +
-        '<div class="idcard-photo-ring"><img class="idcard-photo" src="' + imgSrc + '" referrerpolicy="no-referrer" crossorigin="anonymous"></div>' +
-        '<div class="idcard-body">' +
-          '<div class="idcard-name">' + esc(m.Name) + '</div>' +
-          '<div class="idcard-sub">সদস্য নং: ' + esc(m.MemberNo) + '</div>' +
-          '<div style="font-size:14px; font-weight:600; color:var(--ink-soft); margin-top:4px;">' + ORG_NAME + '</div>' +
+        '<div class="idcard-header">' +
+          '<div class="idcard-header-left">' + sealSmall +
+            '<div style="min-width:0;">' +
+              '<div class="idcard-org">' + esc(ORG_NAME) + '</div>' +
+              '<div class="idcard-org-sub">' + esc(ORG_SUB) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="idcard-header-right">' +
+            '<div class="idcard-card-type">সদস্য পরিচয়পত্র</div>' +
+            '<div class="idcard-card-type-en ssa-en">MEMBER ID CARD</div>' +
+          '</div>' +
         '</div>' +
-        '<div class="idcard-divider"></div>' +
-        '<div class="idcard-details">' +
-          '<div class="row"><span class="k">মোবাইল</span><span class="v ssa-en">' + (formatMobile(m.Mobile) || '—') + '</span></div>' +
-          '<div class="row"><span class="k">মাসিক কিস্তি</span><span class="v">৳' + money(m.InstallmentAmount) + '</span></div>' +
-          '<div class="row"><span class="k">মোট কিস্তির পরিমাণ</span><span class="v">৳' + money(m.totalPaid) + '</span></div>' +
-          '<div class="row"><span class="k">মোট জরিমানা</span><span class="v">৳' + money(m.totalFine) + '</span></div>' +
+        '<div class="idcard-body-land">' +
+          '<div class="idcard-photo-col">' +
+            '<div class="idcard-photo-frame"><img class="idcard-photo" src="' + imgSrc + '" referrerpolicy="no-referrer" crossorigin="anonymous"></div>' +
+            '<div class="idcard-memberno-chip ssa-en">' + esc(m.MemberNo) + '</div>' +
+          '</div>' +
+          '<div class="idcard-info-col">' +
+            '<div class="idcard-name-land">' + esc(m.Name) + '</div>' +
+            '<div class="idcard-name-sub">সদস্য • ' + esc(ORG_NAME) + '</div>' +
+            '<div class="idcard-fields">' +
+              '<div class="idcard-field"><div class="k">মোবাইল</div><div class="v ssa-en">' + (formatMobile(m.Mobile) || '—') + '</div></div>' +
+              '<div class="idcard-field"><div class="k">মাসিক কিস্তি</div><div class="v">৳' + money(m.InstallmentAmount) + '</div></div>' +
+              '<div class="idcard-field"><div class="k">মোট কিস্তির পরিমাণ</div><div class="v">৳' + money(m.totalPaid) + '</div></div>' +
+              '<div class="idcard-field"><div class="k">মোট জরিমানা</div><div class="v">৳' + money(m.totalFine) + '</div></div>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
-        '<div class="idcard-bottom">কার্ড প্রদানের তারিখ: ' + bnDate(new Date()) + '</div>' +
+        '<div class="idcard-footer-land">' +
+          '<div class="idcard-issue">কার্ড প্রদানের তারিখ: ' + bnDate(new Date()) + '</div>' +
+          '<div class="idcard-barcode"></div>' +
+        '</div>' +
       '</div>'
     );
   }
@@ -2178,8 +2282,8 @@
     waitForImages(cardEl).then(function () {
       return html2canvas(cardEl, { scale: 3, useCORS: true, allowTaint: true, backgroundColor: '#ffffff' });
     }).then(function (canvas) {
-      var pageW = 54, pageH = pageW * (canvas.height / canvas.width);
-      var pdf = new window.jspdf.jsPDF({ orientation: 'portrait', unit: 'mm', format: [pageW, pageH] });
+      var pageW = 85.6, pageH = pageW * (canvas.height / canvas.width);
+      var pdf = new window.jspdf.jsPDF({ orientation: 'landscape', unit: 'mm', format: [pageW, pageH] });
       var quality = 0.95; 
       var imgData = canvas.toDataURL('image/jpeg', quality);
       var approxKB = (imgData.length * 0.75) / 1024;
