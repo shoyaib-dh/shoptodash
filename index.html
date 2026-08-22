@@ -26,350 +26,641 @@
   <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ============================================================
+       প্রিমিয়াম ডার্ক থিম — সপ্তদশ সহযাত্রা
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+
     body {
-      background-color: #E1E8E4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
+      margin: 0; padding: 0;
+      background: #0D0F1A;
       min-height: 100vh;
       overflow-x: hidden;
+      font-family: 'Tiro Bangla', 'Poppins', serif;
     }
-    
-    #ssa-root, #ssa-root * { box-sizing: border-box; }
+
     #ssa-root {
-      --ink:#3A2415; --ink-soft:#9A7B62;
-      --bg:#FFF7EF; --card:rgba(255,255,255,.58); --card-solid:#FFFFFF; --moss:rgba(255,141,42,.12);
-      --teal:#FF7A29; --teal-deep:#B8460E; --accent:#FF9A4D;
-      --gold:#FFE3C6; --gold-soft:rgba(255,154,77,.20); --gold-ink:#B8460E;
-      --brick:#D8362A; --brick-soft:rgba(216,54,42,.12);
-      --line:rgba(58,36,21,.10);
-      --glass-border:rgba(255,255,255,.65);
-      --glass-shadow:0 20px 45px -22px rgba(184,70,14,.35);
-      font-family:'Tiro Bangla','Poppins',serif;
-      font-size:16.5px; line-height:1.6;
-      background:
-        radial-gradient(circle at 8% 8%, rgba(255,154,77,.20), transparent 40%),
-        radial-gradient(circle at 92% 12%, rgba(255,122,41,.16), transparent 45%),
-        radial-gradient(circle at 50% 100%, rgba(255,197,140,.20), transparent 50%),
-        var(--bg);
-      color:var(--ink);
-      width: 100%; 
+      /* ── Color Tokens ── */
+      --bg:          #0D0F1A;
+      --bg2:         #13162B;
+      --bg3:         #1A1E35;
+      --card:        rgba(26, 30, 53, 0.85);
+      --card-solid:  #1A1E35;
+      --line:        rgba(120,130,200,0.14);
+      --glass-border:rgba(120,130,200,0.22);
+
+      --ink:         #E8EAF6;
+      --ink-soft:    #8890B5;
+      --ink-muted:   #565E8A;
+
+      --primary:     #6C63FF;       /* vibrant indigo-violet */
+      --primary-glow:rgba(108,99,255,0.35);
+      --primary-deep:#4A44C4;
+
+      --accent:      #00D4AA;       /* teal/cyan accent */
+      --accent-soft: rgba(0,212,170,0.15);
+
+      --gold:        #FFD166;
+      --gold-soft:   rgba(255,209,102,0.15);
+      --gold-ink:    #FFD166;
+
+      --danger:      #FF4B6B;
+      --danger-soft: rgba(255,75,107,0.15);
+
+      --success:     #00D4AA;
+
+      --glass-shadow: 0 20px 60px -20px rgba(0,0,0,0.7);
+
+      font-family: 'Tiro Bangla', 'Poppins', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      width: 100%;
       height: 100vh;
-      margin: 0;
-      border: none;
-      position: relative;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
-    .ssa-glass {
-      background:var(--card) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(170%);
-      backdrop-filter: blur(20px) saturate(170%);
-      border:1px solid var(--glass-border) !important;
-      box-shadow:var(--glass-shadow);
-    }
-    #ssa-root h1,#ssa-root h2,#ssa-root h3,.ssa-display { font-family:'Tiro Bangla','Poppins',serif; }
-    .ssa-en { font-family:'Poppins',sans-serif; }
-    #ssa-root button { font-family:inherit; cursor:pointer; }
-    #ssa-root input, #ssa-root select { font-family:inherit; }
 
-    /* ---------- লগ-ইন স্ক্রিন ---------- */
-    .ssa-login-wrap {
-      flex: 1; display:flex; align-items:center; justify-content:center;
+    .ssa-en { font-family: 'Poppins', sans-serif; }
+    #ssa-root h1,#ssa-root h2,#ssa-root h3 { font-family: 'Tiro Bangla','Poppins',serif; }
+    #ssa-root button, #ssa-root input, #ssa-root select, #ssa-root textarea { font-family: inherit; }
+    #ssa-root button { cursor: pointer; }
+
+    /* ── Background glow orbs ── */
+    body::before {
+      content:'';
+      position:fixed; inset:0; pointer-events:none; z-index:0;
       background:
-        radial-gradient(circle at 15% 20%, rgba(18,145,95,.10), transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(18,56,50,.12), transparent 45%),
-        var(--bg);
-      padding:20px;
+        radial-gradient(ellipse 60% 50% at 15% 0%,   rgba(108,99,255,.18), transparent),
+        radial-gradient(ellipse 50% 40% at 85% 100%,  rgba(0,212,170,.12), transparent),
+        radial-gradient(ellipse 40% 35% at 50% 50%,   rgba(108,99,255,.05), transparent);
+    }
+
+    /* ══════════════════════════════════════════
+       LOGIN
+    ══════════════════════════════════════════ */
+    .ssa-login-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
     }
     .ssa-login-card {
-      width:100%; max-width:380px; background:var(--card);
-      border:1px solid var(--line); border-radius:18px;
-      padding:38px 34px 32px; text-align:center;
-      box-shadow:0 18px 40px -18px rgba(11,38,34,.35);
+      width: 100%;
+      max-width: 400px;
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 44px 38px 38px;
+      text-align: center;
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      box-shadow: var(--glass-shadow), 0 0 0 1px rgba(108,99,255,.1);
     }
-    .ssa-seal { width:84px; height:84px; margin:0 auto 14px; }
-    .ssa-login-card h1 { font-size:25.5px; margin:0 0 2px; color:var(--teal-deep); }
-    .ssa-login-sub { color:var(--ink-soft); font-size:15px; margin:0 0 26px; letter-spacing:.02em; }
-    .ssa-field { text-align:left; margin-bottom:16px; }
-    .ssa-field label { display:block; font-size:14.5px; color:var(--ink-soft); margin-bottom:6px; font-weight: 500;}
-    .ssa-field input, .ssa-field textarea, .ssa-field select {
-      width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px;
-      font-size:16px; background:#FDFCF9; color:var(--ink); font-family: inherit;
+    .ssa-seal { width: 80px; height: 80px; margin: 0 auto 16px; }
+    .ssa-login-card h1 {
+      font-size: 26px; margin: 0 0 4px;
+      background: linear-gradient(135deg, #A9A4FF 0%, #6C63FF 50%, #00D4AA 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .ssa-field input:focus, .ssa-field textarea:focus, .ssa-field select:focus { outline:none; border-color:var(--gold); background:#fff; }
+    .ssa-login-sub { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 28px; }
+
+    .ssa-field { text-align: left; margin-bottom: 16px; }
+    .ssa-field label { display: block; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 7px; font-weight: 500; }
+    .ssa-field input,
+    .ssa-field textarea,
+    .ssa-field select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 15.5px;
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      transition: border .2s, background .2s;
+    }
+    .ssa-field input:focus,
+    .ssa-field textarea:focus,
+    .ssa-field select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(108,99,255,.08);
+    }
+    .ssa-field select option { background: #1A1E35; color: var(--ink); }
+
     .ssa-login-btn {
-      width:100%; padding:12px; border:none; border-radius:9px; margin-top:6px;
-      background:var(--teal); color:#EAFBF3; font-weight:600; font-size:17px;
-      letter-spacing:.02em; transition:background .15s;
+      width: 100%; padding: 13px;
+      border: none; border-radius: 12px; margin-top: 8px;
+      background: linear-gradient(135deg, #7C74FF 0%, #6C63FF 50%, #4A44C4 100%);
+      color: #fff; font-weight: 700; font-size: 17px;
+      letter-spacing: .03em;
+      box-shadow: 0 8px 24px -6px rgba(108,99,255,.6);
+      transition: transform .15s, box-shadow .15s;
     }
-    .ssa-login-btn:hover { background:var(--teal-deep); }
-    .ssa-login-error { color:var(--brick); font-size:15px; margin-top:14px; min-height:16px; }
+    .ssa-login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -8px rgba(108,99,255,.75);
+    }
+    .ssa-login-error { color: var(--danger); font-size: 14.5px; margin-top: 14px; min-height: 16px; }
 
-    /* ---------- অ্যাপ শেল ---------- */
-    .ssa-app { display:none; flex: 1; flex-direction: column; height: 100vh; overflow: hidden; }
-    .ssa-shell { display:flex; flex: 1; height: 100vh; overflow: hidden;}
+    /* ══════════════════════════════════════════
+       APP SHELL
+    ══════════════════════════════════════════ */
+    .ssa-app { display: none; flex: 1; flex-direction: column; height: 100vh; overflow: hidden; position: relative; z-index: 1; }
+    .ssa-shell { display: flex; flex: 1; height: 100vh; overflow: hidden; }
+
+    /* ── Sidebar ── */
     .ssa-sidebar {
-      width:240px; flex-shrink:0; background:var(--teal-deep); color:#DCEEE3;
-      padding:24px 16px; display:flex; flex-direction:column; z-index: 10;
-    }
-    .ssa-brand { display:flex; align-items:center; gap:10px; margin-bottom:30px; padding:0 6px; }
-    .ssa-brand svg { width:34px; height:34px; flex-shrink:0; }
-    .ssa-brand-text { font-family:'Tiro Bangla','Poppins',serif; font-size:17px; line-height:1.25; }
-    .ssa-nav { display: flex; flex-direction: column; gap: 4px; }
-    .ssa-nav button {
-      display:flex; align-items:center; gap:10px; width:100%; text-align:left;
-      padding:11px 12px; border:none; background:transparent; color:#CBD6CC;
-      border-radius:8px; font-size:16px; margin-bottom:4px; transition: 0.2s;
-    }
-    .ssa-nav button.active { background:rgba(23,166,115,.22); color:#DCF3E7; font-weight: 500;}
-    .ssa-nav button:hover { background:rgba(255,255,255,.06); }
-    .ssa-logout { margin-top:auto; color:#9FB0A4; background:transparent; border:1px solid rgba(255,255,255,.15); border-radius:8px; padding:10px; font-size:15px; transition: 0.2s;}
-    .ssa-logout:hover { background:rgba(255,255,255,.06); color:#fff; }
-
-    .ssa-main { flex:1; padding:26px 30px; overflow-y:auto; overflow-x:hidden; background:var(--bg); height: 100%;}
-    .ssa-page-title { font-size:25.5px; color:var(--teal-deep); margin:0 0 4px; }
-    .ssa-page-sub { color:var(--ink-soft); font-size:15.5px; margin:0 0 22px; }
-
-    /* stat cards */
-    .ssa-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:28px; }
-    .ssa-stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; position:relative; overflow:hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);}
-    .ssa-stat::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--accent); }
-    .ssa-stat.warn::before { background:var(--brick); }
-    .ssa-stat-label { font-size:14px; color:var(--ink-soft); margin-bottom:6px; font-weight: 500;}
-    .ssa-stat-value { font-size:28px; font-weight:700; color:var(--teal-deep); font-family:'Tiro Bangla','Poppins',serif; }
-
-    .ssa-btn { border:none; border-radius:8px; padding:9px 16px; font-size:15.5px; font-weight:600; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px;}
-    .ssa-btn-primary { background:var(--teal); color:#EAFBF3; }
-    .ssa-btn-primary:hover { background:var(--teal-deep); }
-    .ssa-btn-ghost { background:transparent; border:1px solid var(--line); color:var(--ink); }
-    .ssa-btn-ghost:hover { background: #f0f0f0;}
-    .ssa-btn-gold { background:var(--gold-soft); color:var(--gold-ink); }
-    .ssa-btn-gold:hover { background:#CFECD9; }
-    .ssa-btn-danger { background:var(--brick-soft); color:var(--brick); }
-    .ssa-btn-danger:hover { background:#F5D0CB; }
-    .ssa-btn-sm { padding:6px 12px; font-size:14px; border-radius:6px; }
-    .ssa-btn-clickable-pill { cursor: pointer; border: none; font-family: inherit; transition: 0.2s; }
-    .ssa-btn-clickable-pill:hover { transform: scale(1.05); }
-
-    .ssa-toolbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
-    .ssa-search { flex:1; min-width:220px; position:relative; }
-    .ssa-search input { width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:9px; font-size:16px; background:#fff; }
-
-    .ssa-table-wrap { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow-x:auto; -webkit-overflow-scrolling:touch; box-shadow: 0 2px 4px rgba(0,0,0,0.02);}
-    table.ssa-table { width:100%; min-width:800px; border-collapse:collapse; font-size:15.5px; }
-    table.ssa-table th { text-align:left; background:var(--moss); color:var(--teal-deep); font-weight:600; padding:12px 16px; font-size:14.5px; white-space: nowrap;}
-    table.ssa-table td { padding:12px 16px; border-top:1px solid var(--line); vertical-align:middle; }
-    table.ssa-table tr:hover td { background:#FBF9F4; }
-    .ssa-avatar { width:38px; height:38px; border-radius:50%; object-fit:cover; background:var(--moss); border:1px solid var(--line); }
-    .ssa-pill { display:inline-block; padding:4px 10px; border-radius:20px; font-size:13px; font-weight:600; white-space: nowrap;}
-    .ssa-pill.gold { background:var(--gold-soft); color:var(--gold-ink); }
-    .ssa-pill.brick { background:var(--brick-soft); color:var(--brick); }
-    .ssa-actions { display:flex; gap:8px; flex-wrap:wrap; }
-
-    /* modal */
-    .ssa-overlay { display:none; position:fixed; inset:0; background:rgba(11,38,34,.6); z-index:9999; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(2px);}
-    .ssa-modal { background:#fff; width:100%; max-width:480px; border-radius:16px; padding:30px; max-height:90vh; overflow:auto; position: relative; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);}
-    .ssa-modal h3 { margin:0 0 20px; color:var(--teal-deep); font-size: 20px;}
-    .ssa-modal .ssa-field { margin-bottom:16px; }
-    .ssa-modal-actions { display:flex; justify-content:flex-end; gap:12px; margin-top:24px; }
-    .ssa-fine-note { font-size:14.5px; color:var(--brick); margin-top:8px; display:none; background: var(--brick-soft); padding: 8px 12px; border-radius: 8px;}
-    .ssa-stmt-modal { max-width: 850px; } 
-
-    /* Custom Alert / Confirm */
-    .ssa-dialog-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:10000; align-items:center; justify-content:center; padding:20px; backdrop-filter: blur(2px);}
-    .ssa-dialog { background:#fff; width:100%; max-width:380px; border-radius:16px; padding:26px; text-align:center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-    .ssa-dialog p { margin: 0 0 24px 0; font-size: 16px; color: var(--ink); line-height: 1.5;}
-    .ssa-dialog .ssa-modal-actions { justify-content: center; margin-top: 0;}
-
-    /* Pagination */
-    .ssa-pagination { display:flex; justify-content:center; gap:8px; margin-top:24px; flex-wrap: wrap;}
-    .ssa-page-btn { padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:500; font-family: inherit; font-size: 14px; border: 1px solid var(--line); background:#fff; color:var(--ink); transition: 0.2s;}
-    .ssa-page-btn:hover { background: #f0f0f0; }
-    .ssa-page-btn.active { background:var(--teal); color:#fff; border-color:var(--teal); }
-
-    /* photo upload widget */
-    .ssa-photo-upload { display:flex; align-items:center; gap:16px; }
-    .ssa-photo-preview {
-      width:70px; height:70px; border-radius:50%; object-fit:cover; flex-shrink:0;
-      background:var(--moss); border:1px solid var(--line); display:none;
-    }
-    .ssa-photo-upload-controls { flex:1; min-width:0; }
-    .ssa-photo-upload-controls input[type="file"] {
-      width:100%; font-size:14px; color:var(--ink-soft);
-      padding:10px 12px; border:1px dashed var(--line); border-radius:9px; background:#FDFCF9; cursor: pointer;
-    }
-    .ssa-photo-status { font-size:13px; margin-top:8px; min-height:15px; }
-
-    .ssa-empty { text-align:center; padding:60px 20px; color:var(--ink-soft); font-size: 16px;}
-    .ssa-loading { text-align:center; padding:60px; color:var(--ink-soft); font-size: 16px;}
-
-    #ssa-print-zone { position:fixed; left:-9999px; top:0; }
-
-    /* সদস্য আইডি কার্ড (পোর্ট্রেট) */
-    .ssa-idcard-tpl {
-      width:340px; background:#fff; border-radius:26px;
-      font-family:'Tiro Bangla','Poppins',serif; overflow:hidden; position:relative;
-      box-shadow:0 22px 46px -22px rgba(11,61,46,.5);
-    }
-    .idcard-top {
-      position:relative; height:118px; background:var(--teal-deep);
-      border-bottom-left-radius:60% 42px; border-bottom-right-radius:60% 42px;
-      display: flex; justify-content: center;
-    }
-    .idcard-top svg { width:30px; height:30px; position:absolute; top:16px; left:20px; }
-    .idcard-photo-ring {
-      width:112px; height:112px; border-radius:50%; background:#fff; padding:5px;
-      margin:0 auto; position:relative; top:-56px;
-      box-shadow:0 6px 18px -4px rgba(11,61,46,.4);
-      overflow: hidden;
-    }
-    .idcard-photo { width:100%; height:100%; border-radius:50%; object-fit:cover; background:var(--moss); display:block; }
-    
-    .idcard-body { margin-top:-40px; padding:0 26px 8px; text-align:center; }
-    .idcard-name { font-size:21px; font-weight:700; color:var(--ink); }
-    .idcard-sub { font-size:12.5px; color:var(--teal); font-weight:600; letter-spacing:.04em; margin-top:2px; }
-    .idcard-divider { height:1px; background:var(--line); margin:18px 24px; }
-    .idcard-details { padding:0 26px; text-align:left; }
-    .idcard-details .row { display:flex; justify-content:space-between; padding:9px 0; font-size:13.5px; border-bottom:1px dashed var(--line); }
-    .idcard-details .row:last-child { border-bottom:none; }
-    .idcard-details .k { color:var(--ink-soft); }
-    .idcard-details .v { font-weight:700; color:var(--ink); }
-    .idcard-bottom {
-      margin-top:14px; height:46px; background:var(--teal-deep);
-      border-top-left-radius:60% 30px; border-top-right-radius:60% 30px;
-      display:flex; align-items:center; justify-content:center;
-      color:#DCF3E7; font-size:11.5px; text-align:center; padding:0 16px;
-    }
-
-    .ssa-stmt-tpl { width:794px; min-height:1123px; background:#fff; padding:60px 56px; font-family:'Tiro Bangla','Poppins',serif; }
-    .ssa-stmt-head { display:flex; align-items:center; gap:16px; border-bottom:3px solid var(--teal-deep); padding-bottom:18px; margin-bottom:22px; }
-    .ssa-stmt-head svg { width:52px; height:52px; }
-    .ssa-stmt-head .t1 { font-family:'Tiro Bangla','Poppins',serif; font-size:25.5px; color:var(--teal-deep); }
-    .ssa-stmt-head .t2 { font-size:14.5px; color:var(--ink-soft); }
-    .ssa-stmt-title { font-family:'Tiro Bangla','Poppins',serif; font-size:19.5px; margin:18px 0 6px; color:var(--teal-deep); }
-    .ssa-stmt-meta { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; font-size:15.5px; margin-bottom:22px; }
-    .ssa-stmt-meta .k { color:var(--ink-soft); }
-    table.ssa-stmt-table { width:100%; border-collapse:collapse; font-size:15px; }
-    table.ssa-stmt-table th { background:var(--moss); color:var(--teal-deep); text-align:left; padding:9px 12px; border:1px solid var(--line); }
-    table.ssa-stmt-table td { padding:8px 12px; border:1px solid var(--line); }
-    .ssa-stmt-summary { margin-top:18px; margin-left:auto; width:280px; font-size:15.5px; }
-    .ssa-stmt-summary div { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--line); }
-    .ssa-stmt-summary .total { font-weight:700; color:var(--teal-deep); font-size:17px; border-bottom:none; }
-    .ssa-stmt-foot { margin-top:40px; font-size:12.5px; color:var(--ink-soft); text-align:center; }
-
-    @media (max-width:900px){
-      .ssa-main{padding:22px 20px;}
-      .ssa-sidebar{ width: 220px;}
-    }
-
-    /* মোবাইল ভিউ - App Like Design */
-    @media (max-width:768px){
-      body { height: 100vh; overflow: hidden; }
-      #ssa-root { flex-direction: column; height: 100vh; overflow: hidden; }
-      .ssa-shell { flex-direction: column; height: 100%; flex: 1; }
-      
-      .ssa-sidebar {
-        width: 100%; height: auto; flex-direction: row; justify-content: space-between; align-items: center;
-        padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); flex-shrink: 0;
-      }
-      .ssa-brand { margin-bottom: 0; }
-      .ssa-brand-text { font-size: 18px; }
-      
-      .ssa-sidebar > div:nth-child(3) { display: none; } 
-      .ssa-logout { margin-top: 0; padding: 6px 12px; font-size: 14px; }
-      
-      .ssa-nav {
-        position: fixed; bottom: 0; left: 0; right: 0;
-        background: var(--card); display: flex; flex-direction: row; justify-content: space-around;
-        padding: 8px 5px 12px; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 1000;
-        border-top: 1px solid var(--line); margin: 0; border-radius: 20px 20px 0 0;
-      }
-      .ssa-nav button {
-        flex-direction: column; gap: 4px; padding: 6px 4px; margin: 0; width: auto; flex: 1;
-        text-align: center; justify-content: center; color: var(--ink-soft); border-radius: 8px; font-size: 20px;
-      }
-      .ssa-nav button span { display: block; font-size: 11px; margin-top: 2px; font-weight: 500;}
-      .ssa-nav button.active { background: var(--moss); color: var(--teal-deep); }
-      
-      .ssa-main { padding: 16px 16px 100px 16px; overflow-y: auto; flex: 1; } 
-      .ssa-page-title { font-size: 22px; }
-      
-      .ssa-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .ssa-stat { padding: 16px; }
-      .ssa-stat-value { font-size: 22px; }
-      
-      .ssa-toolbar { flex-direction: column; align-items: stretch; gap: 12px; }
-      .ssa-search { width: 100%; min-width: 0; }
-      .ssa-toolbar .ssa-btn { width: 100%; }
-      
-      .ssa-table-wrap { border-radius: 8px; }
-      
-      .ssa-modal { padding: 24px; max-width: 95%; border-radius: 16px; margin: 10px; max-height: 85vh;}
-      .ssa-modal-actions { flex-direction: column-reverse; gap: 10px; }
-      .ssa-modal-actions .ssa-btn { width: 100%; text-align: center; justify-content: center; }
-    }
-
-    @media (max-width:480px){
-      .ssa-stats { grid-template-columns: 1fr; }
-      table.ssa-table th, table.ssa-table td { padding: 10px; font-size: 14px;}
-      .ssa-actions { flex-direction: row; gap: 6px;}
-    }
-
-    /* ================= গ্লাস ইফেক্ট (হোয়াইট-অরেঞ্জ থিম) ================= */
-    body {
-      background:
-        radial-gradient(circle at 10% 10%, rgba(255,154,77,.25), transparent 42%),
-        radial-gradient(circle at 90% 15%, rgba(255,122,41,.18), transparent 46%),
-        radial-gradient(circle at 50% 100%, rgba(255,197,140,.22), transparent 55%),
-        linear-gradient(180deg, #FFF9F3, #FFEEDF 60%, #FFE4CC);
-      background-attachment: fixed;
-    }
-    .ssa-login-card, .ssa-stat, .ssa-table-wrap {
-      background:var(--card) !important;
-      -webkit-backdrop-filter: blur(20px) saturate(170%);
-      backdrop-filter: blur(20px) saturate(170%);
-      border:1px solid var(--glass-border) !important;
-      box-shadow:var(--glass-shadow) !important;
-    }
-    .ssa-modal, .ssa-dialog {
-      background:var(--card) !important;
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      backdrop-filter: blur(24px) saturate(180%);
-      border:1px solid var(--glass-border);
-      box-shadow:0 25px 60px -20px rgba(184,70,14,.45) !important;
-    }
-    .ssa-overlay, .ssa-dialog-overlay { background:rgba(58,36,21,.45) !important; }
-    .ssa-sidebar {
-      background: linear-gradient(165deg, #FF8A3D 0%, #B8460E 65%, #7A2E0A 100%) !important;
-      position: relative; overflow: hidden;
-      box-shadow: 4px 0 30px -10px rgba(122,46,10,.4);
+      width: 250px;
+      flex-shrink: 0;
+      background: linear-gradient(175deg, #1C1F38 0%, #141729 60%, #0F1120 100%);
+      border-right: 1px solid var(--line);
+      padding: 24px 14px;
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      position: relative;
     }
     .ssa-sidebar::before {
-      content:''; position:absolute; inset:0; pointer-events:none;
-      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,.18), transparent 55%);
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 200px;
+      pointer-events: none;
+      background: radial-gradient(ellipse 80% 60% at 40% 0%, rgba(108,99,255,.20), transparent);
     }
-    .ssa-nav button.active { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-    .ssa-field input, .ssa-field textarea, .ssa-field select {
-      background:rgba(255,255,255,.7) !important;
+    .ssa-brand {
+      display: flex; align-items: center; gap: 11px;
+      margin-bottom: 32px; padding: 0 6px;
+      position: relative;
     }
-    .ssa-search input { background:rgba(255,255,255,.75) !important; }
-    .ssa-login-wrap {
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,154,77,.22), transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(184,70,14,.20), transparent 45%),
-        var(--bg) !important;
+    .ssa-brand svg { width: 36px; height: 36px; flex-shrink: 0; }
+    .ssa-brand-text {
+      font-size: 15.5px; line-height: 1.3; font-weight: 700;
+      background: linear-gradient(135deg, #C0BCFF, #6C63FF);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
+
+    .ssa-nav { display: flex; flex-direction: column; gap: 4px; position: relative; }
+    .ssa-nav button {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; text-align: left;
+      padding: 11px 14px;
+      border: none;
+      background: transparent;
+      color: var(--ink-soft);
+      border-radius: 10px;
+      font-size: 15.5px;
+      transition: all .2s;
+      position: relative;
+    }
+    .ssa-nav button:hover { background: rgba(108,99,255,.10); color: var(--ink); }
+    .ssa-nav button.active {
+      background: linear-gradient(90deg, rgba(108,99,255,.25), rgba(108,99,255,.10));
+      color: #C0BCFF;
+      font-weight: 600;
+      border-left: 3px solid var(--primary);
+    }
+
+    .ssa-user-info {
+      margin-top: auto;
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      padding: 14px 12px 10px;
+      border-top: 1px solid var(--line);
+      margin-bottom: 10px;
+    }
+    .ssa-user-info strong { display: block; color: var(--ink-soft); font-weight: 600; margin-bottom: 2px; }
+
+    .ssa-logout {
+      background: rgba(255,75,107,.08);
+      border: 1px solid rgba(255,75,107,.20);
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 14.5px;
+      color: var(--danger);
+      transition: all .2s;
+      position: relative;
+    }
+    .ssa-logout:hover { background: rgba(255,75,107,.16); }
+
+    /* ── Main Content ── */
     .ssa-main {
+      flex: 1;
+      padding: 28px 32px;
+      overflow-y: auto;
+      overflow-x: hidden;
       background:
-        radial-gradient(circle at 100% 0%, rgba(255,154,77,.12), transparent 45%),
-        var(--bg) !important;
+        radial-gradient(ellipse 50% 40% at 80% 10%, rgba(108,99,255,.07), transparent),
+        var(--bg);
+      height: 100%;
     }
-    .ssa-page-btn { background:rgba(255,255,255,.7) !important; }
-    /* প্রিন্ট/পিডিএফ টেমপ্লেট স্বচ্ছতাবিহীন সাদা থাকবে (স্পষ্ট আউটপুটের জন্য) */
-    .ssa-idcard-tpl, .ssa-stmt-tpl { background:var(--card-solid) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+    .ssa-page-title { font-size: 26px; color: var(--ink); margin: 0 0 4px; font-weight: 700; }
+    .ssa-page-sub { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 24px; }
+
+    /* ── Stat Cards ── */
+    .ssa-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .ssa-stat {
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 24px -8px rgba(0,0,0,0.4);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ssa-stat:hover { transform: translateY(-2px); box-shadow: 0 8px 32px -8px rgba(0,0,0,0.5); }
+    .ssa-stat::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    .ssa-stat.warn::before { background: linear-gradient(to bottom, var(--danger), #FF8F70); }
+    .ssa-stat::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: radial-gradient(circle, var(--primary-glow), transparent 70%);
+      border-radius: 50%;
+      transform: translate(30%, -30%);
+    }
+    .ssa-stat.warn::after { background: radial-gradient(circle, rgba(255,75,107,.2), transparent 70%); }
+    .ssa-stat-label { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; font-weight: 500; position: relative; z-index: 1; }
+    .ssa-stat-value {
+      font-size: 26px; font-weight: 700; color: var(--ink);
+      font-family: 'Tiro Bangla','Poppins',serif;
+      position: relative; z-index: 1;
+    }
+
+    /* ── Buttons ── */
+    .ssa-btn {
+      border: none; border-radius: 10px; padding: 9px 18px;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      transition: all .2s;
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    }
+    .ssa-btn-primary {
+      background: linear-gradient(135deg, #7C74FF, #6C63FF);
+      color: #fff;
+      box-shadow: 0 4px 14px -4px rgba(108,99,255,.6);
+    }
+    .ssa-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -4px rgba(108,99,255,.7); }
+    .ssa-btn-ghost {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      color: var(--ink-soft);
+    }
+    .ssa-btn-ghost:hover { background: rgba(255,255,255,.10); color: var(--ink); }
+    .ssa-btn-gold {
+      background: var(--gold-soft);
+      color: var(--gold-ink);
+      border: 1px solid rgba(255,209,102,.25);
+    }
+    .ssa-btn-gold:hover { background: rgba(255,209,102,.25); }
+    .ssa-btn-danger {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid rgba(255,75,107,.2);
+    }
+    .ssa-btn-danger:hover { background: rgba(255,75,107,.22); }
+    .ssa-btn-sm { padding: 6px 12px; font-size: 13.5px; border-radius: 8px; }
+    .ssa-btn-clickable-pill { cursor: pointer; border: none; font-family: inherit; transition: all .2s; }
+    .ssa-btn-clickable-pill:hover { transform: scale(1.05); }
+
+    /* ── Toolbar & Search ── */
+    .ssa-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .ssa-search { flex: 1; min-width: 220px; position: relative; }
+    .ssa-search input {
+      width: 100%; padding: 10px 14px 10px 40px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 15.5px;
+      background: var(--bg3);
+      color: var(--ink);
+      transition: border .2s;
+    }
+    .ssa-search::before {
+      content: '🔍';
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      font-size: 14px; pointer-events: none; opacity: .5;
+    }
+    .ssa-search input:focus { outline: none; border-color: var(--primary); }
+
+    /* ── Table ── */
+    .ssa-table-wrap {
+      background: var(--card);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    table.ssa-table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 15px; }
+    table.ssa-table th {
+      text-align: left;
+      background: rgba(108,99,255,.10);
+      color: var(--primary);
+      font-weight: 600;
+      padding: 13px 16px;
+      font-size: 13.5px;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: .02em;
+    }
+    table.ssa-table td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      vertical-align: middle;
+      color: var(--ink);
+    }
+    table.ssa-table tr:hover td { background: rgba(108,99,255,.05); }
+
+    .ssa-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      object-fit: cover;
+      background: var(--bg3);
+      border: 2px solid var(--line);
+    }
+    .ssa-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .ssa-pill.gold { background: var(--gold-soft); color: var(--gold-ink); border: 1px solid rgba(255,209,102,.2); }
+    .ssa-pill.brick { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(255,75,107,.2); }
+    .ssa-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── Modals ── */
+    .ssa-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.70);
+      z-index: 9999;
+      align-items: center; justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .ssa-modal {
+      background: #1D2040;
+      border: 1px solid var(--glass-border);
+      width: 100%; max-width: 480px;
+      border-radius: 20px;
+      padding: 32px;
+      max-height: 90vh;
+      overflow: auto;
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(108,99,255,.15);
+    }
+    .ssa-modal h3 {
+      margin: 0 0 22px;
+      font-size: 20px;
+      background: linear-gradient(135deg, #C0BCFF, #6C63FF);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ssa-modal .ssa-field { margin-bottom: 14px; }
+    .ssa-modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 26px; }
+    .ssa-fine-note {
+      font-size: 14px; color: var(--danger); margin-top: 8px; display: none;
+      background: var(--danger-soft); padding: 8px 12px; border-radius: 8px;
+    }
+    .ssa-stmt-modal { max-width: 900px; }
+
+    /* ── Custom Alert/Confirm ── */
+    .ssa-dialog-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.75);
+      z-index: 10000;
+      align-items: center; justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .ssa-dialog {
+      background: #1D2040;
+      border: 1px solid var(--glass-border);
+      width: 100%; max-width: 380px;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,.8);
+    }
+    .ssa-dialog p { margin: 0 0 24px; font-size: 16px; color: var(--ink); line-height: 1.6; }
+    .ssa-dialog .ssa-modal-actions { justify-content: center; margin-top: 0; }
+
+    /* ── Pagination ── */
+    .ssa-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
+    .ssa-page-btn {
+      padding: 8px 15px; border-radius: 9px; cursor: pointer;
+      font-weight: 500; font-family: inherit; font-size: 14px;
+      border: 1px solid var(--line);
+      background: var(--bg3);
+      color: var(--ink-soft);
+      transition: all .2s;
+    }
+    .ssa-page-btn:hover { background: rgba(108,99,255,.12); color: var(--ink); border-color: var(--primary); }
+    .ssa-page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* ── Photo Upload ── */
+    .ssa-photo-upload { display: flex; align-items: center; gap: 16px; }
+    .ssa-photo-preview {
+      width: 72px; height: 72px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+      background: var(--bg3);
+      border: 2px solid var(--line);
+      display: none;
+    }
+    .ssa-photo-upload-controls { flex: 1; min-width: 0; }
+    .ssa-photo-upload-controls input[type="file"] {
+      width: 100%; font-size: 13.5px; color: var(--ink-soft);
+      padding: 10px 12px;
+      border: 1px dashed var(--line);
+      border-radius: 10px;
+      background: var(--bg3);
+      cursor: pointer;
+    }
+    .ssa-photo-status { font-size: 13px; margin-top: 8px; min-height: 15px; }
+
+    /* ── Loading/Empty ── */
+    .ssa-empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); font-size: 16px; }
+    .ssa-loading { text-align: center; padding: 60px; color: var(--ink-soft); font-size: 16px; }
+
+    #ssa-print-zone { position: fixed; left: -9999px; top: 0; }
+
+    /* ══════════════════════════════════════════
+       ID CARD (PDF — white background)
+    ══════════════════════════════════════════ */
+    .ssa-idcard-tpl {
+      width: 340px; background: #fff; border-radius: 26px;
+      font-family: 'Tiro Bangla','Poppins',serif; overflow: hidden;
+      box-shadow: 0 22px 46px -22px rgba(0,0,0,.5);
+    }
+    .idcard-top {
+      position: relative; height: 118px;
+      background: linear-gradient(135deg, #6C63FF 0%, #4A44C4 100%);
+      border-bottom-left-radius: 60% 42px; border-bottom-right-radius: 60% 42px;
+    }
+    .idcard-top svg { width: 30px; height: 30px; position: absolute; top: 16px; left: 20px; }
+    .idcard-photo-ring {
+      width: 112px; height: 112px; border-radius: 50%;
+      background: #fff; padding: 5px;
+      margin: 0 auto; position: relative; top: -56px;
+      box-shadow: 0 6px 18px -4px rgba(0,0,0,.35);
+      overflow: hidden;
+    }
+    .idcard-photo { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #E8EAF6; display: block; }
+    .idcard-body { margin-top: -40px; padding: 0 26px 8px; text-align: center; }
+    .idcard-name { font-size: 21px; font-weight: 700; color: #1A1A2E; }
+    .idcard-sub { font-size: 12.5px; color: #6C63FF; font-weight: 600; letter-spacing: .04em; margin-top: 2px; }
+    .idcard-divider { height: 1px; background: #E0E0EE; margin: 18px 24px; }
+    .idcard-details { padding: 0 26px; text-align: left; }
+    .idcard-details .row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 13.5px; border-bottom: 1px dashed #E0E0EE; }
+    .idcard-details .row:last-child { border-bottom: none; }
+    .idcard-details .k { color: #888; }
+    .idcard-details .v { font-weight: 700; color: #1A1A2E; }
+    .idcard-bottom {
+      margin-top: 14px; height: 46px;
+      background: linear-gradient(135deg, #6C63FF, #4A44C4);
+      border-top-left-radius: 60% 30px; border-top-right-radius: 60% 30px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 11.5px; text-align: center; padding: 0 16px;
+    }
+
+    /* ── PDF Statement ── */
+    .ssa-stmt-tpl { width: 794px; min-height: 1123px; background: #fff; padding: 60px 56px; font-family: 'Tiro Bangla','Poppins',serif; color: #111; }
+    .ssa-stmt-head { display: flex; align-items: center; gap: 16px; border-bottom: 3px solid #6C63FF; padding-bottom: 18px; margin-bottom: 22px; }
+    .ssa-stmt-head svg { width: 52px; height: 52px; }
+    .ssa-stmt-head .t1 { font-size: 25.5px; color: #4A44C4; font-weight: 700; }
+    .ssa-stmt-head .t2 { font-size: 14.5px; color: #666; }
+    .ssa-stmt-title { font-size: 19.5px; margin: 18px 0 6px; color: #4A44C4; font-weight: 700; }
+    .ssa-stmt-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; font-size: 15.5px; margin-bottom: 22px; color: #333; }
+    .ssa-stmt-meta .k { color: #666; }
+    table.ssa-stmt-table { width: 100%; border-collapse: collapse; font-size: 15px; color: #333; }
+    table.ssa-stmt-table th { background: #EBEBFF; color: #4A44C4; text-align: left; padding: 9px 12px; border: 1px solid #D0D0EE; font-weight: 600; }
+    table.ssa-stmt-table td { padding: 8px 12px; border: 1px solid #D0D0EE; }
+    .ssa-stmt-summary { margin-top: 18px; margin-left: auto; width: 280px; font-size: 15.5px; color: #333; }
+    .ssa-stmt-summary div { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #D0D0EE; }
+    .ssa-stmt-summary .total { font-weight: 700; color: #4A44C4; font-size: 17px; border-bottom: none; }
+    .ssa-stmt-foot { margin-top: 40px; font-size: 12.5px; color: #888; text-align: center; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE — TABLET
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .ssa-main { padding: 22px 20px; }
+      .ssa-sidebar { width: 210px; }
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE — MOBILE (≤ 768px)
+    ══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      body { height: 100dvh; overflow: hidden; }
+      #ssa-root { flex-direction: column; height: 100dvh; overflow: hidden; }
+      .ssa-shell { flex-direction: column; height: 100%; flex: 1; }
+
+      /* Top Header Bar */
+      .ssa-sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 16px;
+        flex-shrink: 0;
+        background: linear-gradient(90deg, #141729, #1A1E35) !important;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .ssa-sidebar::before { display: none; }
+      .ssa-brand { margin-bottom: 0; }
+      .ssa-brand-text { font-size: 15px; }
+      .ssa-user-info { display: none; }
+
+      /* Bottom Nav Bar */
+      .ssa-nav {
+        position: fixed; bottom: 0; left: 0; right: 0;
+        background: rgba(20, 23, 41, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        display: flex; flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+        z-index: 1000;
+        border-top: 1px solid var(--line);
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -8px 32px -8px rgba(0,0,0,.5);
+        margin: 0;
+      }
+      .ssa-nav button {
+        flex-direction: column; gap: 3px;
+        padding: 6px 4px; margin: 0;
+        width: auto; flex: 1;
+        text-align: center; justify-content: center;
+        color: var(--ink-muted);
+        border-radius: 10px; font-size: 20px;
+        border-left: none !important;
+      }
+      .ssa-nav button span { display: block; font-size: 10.5px; margin-top: 3px; font-weight: 600; }
+      .ssa-nav button.active {
+        background: rgba(108,99,255,.15);
+        color: var(--primary);
+      }
+
+      /* Logout button in top bar */
+      .ssa-logout {
+        margin-top: 0;
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      /* Main content */
+      .ssa-main {
+        padding: 16px 14px 110px 14px;
+        overflow-y: auto;
+        flex: 1;
+      }
+      .ssa-page-title { font-size: 22px; }
+      .ssa-page-sub { font-size: 13.5px; margin-bottom: 16px; }
+
+      /* Stats grid */
+      .ssa-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+      .ssa-stat { padding: 16px 14px; border-radius: 14px; }
+      .ssa-stat-value { font-size: 20px; }
+      .ssa-stat-label { font-size: 12px; }
+
+      /* Toolbar */
+      .ssa-toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
+      .ssa-search { width: 100%; min-width: 0; }
+      .ssa-toolbar .ssa-btn { width: 100%; justify-content: center; }
+
+      /* Table */
+      .ssa-table-wrap { border-radius: 12px; }
+
+      /* Modal */
+      .ssa-modal {
+        padding: 22px 18px;
+        max-width: 100%;
+        border-radius: 20px;
+        margin: 0;
+        max-height: 90dvh;
+      }
+      .ssa-modal h3 { font-size: 18px; margin-bottom: 16px; }
+      .ssa-modal-actions { flex-direction: column-reverse; gap: 10px; }
+      .ssa-modal-actions .ssa-btn { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .ssa-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .ssa-stat-value { font-size: 18px; }
+      table.ssa-table th, table.ssa-table td { padding: 10px 10px; font-size: 13.5px; }
+      .ssa-actions { gap: 5px; }
+      .ssa-btn-sm { padding: 5px 9px; font-size: 12.5px; }
+    }
   </style>
 </head>
 <body>
@@ -402,6 +693,7 @@
     members: [], dashboard: null, dueMembers: [], users: [], 
     page: 'dashboard', currentMemberId: null, auth: null, 
     pendingPhotoDataUrl: null, editingOriginalMemberNo: null,
+    editingMemberPhotoDataUrl: '',
     pagination: { members: 1, due: 1, dashDue: 1 } 
   };
 
@@ -421,13 +713,14 @@
   }
 
   var SEAL_SVG = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">' +
-    '<circle cx="50" cy="50" r="47" fill="none" stroke="#B8460E" stroke-width="2.5"/>' +
-    '<circle cx="50" cy="50" r="39" fill="none" stroke="#B8460E" stroke-width="1"/>' +
-    '<circle cx="50" cy="50" r="34" fill="#FFFFFF"/>' +
-    '<text x="50" y="59" text-anchor="middle" font-family="Tiro Bangla, serif" font-size="30" fill="#B8460E">সস</text>' +
+    '<defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#7C74FF"/><stop offset="100%" style="stop-color:#00D4AA"/></linearGradient></defs>' +
+    '<circle cx="50" cy="50" r="47" fill="none" stroke="url(#sg)" stroke-width="2.5"/>' +
+    '<circle cx="50" cy="50" r="39" fill="none" stroke="url(#sg)" stroke-width="1"/>' +
+    '<circle cx="50" cy="50" r="34" fill="rgba(108,99,255,0.15)"/>' +
+    '<text x="50" y="59" text-anchor="middle" font-family="Tiro Bangla, serif" font-size="30" fill="#7C74FF">সস</text>' +
     '</svg>';
     
-  var FALLBACK_AVATAR = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23FF7A29%22%3E%3Cpath%20d%3D%22M12%2012c2.21%200%204-1.79%204-4s-1.79-4-4-4-4%201.79-4%204%201.79%204%204%204zm0%202c-2.67%200-8%201.34-8%204v2h16v-2c0-2.66-5.33-4-8-4z%22%2F%3E%3C%2Fsvg%3E';
+  var FALLBACK_AVATAR = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%236C63FF%22%3E%3Cpath%20d%3D%22M12%2012c2.21%200%204-1.79%204-4s-1.79-4-4-4-4%201.79-4%204%201.79%204%204%204zm0%202c-2.67%200-8%201.34-8%204v2h16v-2c0-2.66-5.33-4-8-4z%22%2F%3E%3C%2Fsvg%3E';
 
   function esc(s){ return (s===undefined||s===null) ? '' : String(s); }
   function money(n){ return Number(n||0).toLocaleString('bn-BD'); }
@@ -470,10 +763,7 @@
 
   function getMemberPhoto(m){
     if (!m) return '';
-    try {
-      var stored = window.localStorage.getItem('ssa_photo:' + m.MemberNo);
-      if (stored) return stored;
-    } catch (e) {}
+    // Firestore-এ সংরক্ষিত ছবি (সব ডিভাইস থেকে দেখা যাবে)
     return m.Photo || '';
   }
   
@@ -543,7 +833,8 @@
         var d = doc.data();
         arr.push({
           ID: doc.id, Name: d.name, MemberNo: d.member_no, Mobile: d.mobile,
-          InstallmentAmount: d.installment_amount, DueDay: d.due_day, FineAmount: d.fine_amount
+          InstallmentAmount: d.installment_amount, DueDay: d.due_day, FineAmount: d.fine_amount,
+          Photo: d.photo || ''
         });
       });
       return { success: true, data: arr };
@@ -566,16 +857,19 @@
     return db.collection('members').add({
       name: m.Name, member_no: m.MemberNo, mobile: m.Mobile,
       installment_amount: Number(m.InstallmentAmount || 0),
-      due_day: Number(m.DueDay || 0), fine_amount: Number(m.FineAmount || 0)
+      due_day: Number(m.DueDay || 0), fine_amount: Number(m.FineAmount || 0),
+      photo: m.Photo || ''
     }).then(function () { return { success: true }; });
   }
 
   function fsUpdateMember(m) {
-    return db.collection('members').doc(String(m.ID)).set({
+    var data = {
       name: m.Name, member_no: m.MemberNo, mobile: m.Mobile,
       installment_amount: Number(m.InstallmentAmount || 0),
       due_day: Number(m.DueDay || 0), fine_amount: Number(m.FineAmount || 0)
-    }, { merge: true }).then(function () { return { success: true }; });
+    };
+    if (m.Photo !== undefined) data.photo = m.Photo;
+    return db.collection('members').doc(String(m.ID)).set(data, { merge: true }).then(function () { return { success: true }; });
   }
 
   function fsDeleteMember(id) {
@@ -840,9 +1134,9 @@
             '<button data-page="due">⏰ <span>বকেয়া</span></button>' +
             (isAdmin() ? '<button data-page="users">🔑 <span>ইউজার</span></button>' : '') +
           '</div>' +
-          '<div style="margin-top:auto; font-size:14px; color:#9FB0A4; padding:8px 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; margin-bottom: 12px;">' +
-            esc(state.auth ? state.auth.name : '') + '<br>' +
-            '<span style="opacity:.75;">' + (isAdmin() ? 'এডমিন' : 'মেম্বার (রিড-অনলি)') + '</span>' +
+          '<div class="ssa-user-info">' +
+            '<strong>' + esc(state.auth ? state.auth.name : '') + '</strong>' +
+            '<span>' + (isAdmin() ? '🔑 এডমিন' : '👁 রিড-অনলি') + '</span>' +
           '</div>' +
           '<button class="ssa-logout" id="ssa-logout-btn">লগ-আউট</button>' +
         '</div>' +
@@ -1395,21 +1689,6 @@
       e.preventDefault();
       var memberNoVal = document.getElementById('mf-no').value.trim();
 
-      try {
-        if (state.pendingPhotoDataUrl) {
-          window.localStorage.setItem('ssa_photo:' + memberNoVal, state.pendingPhotoDataUrl);
-          if (state.editingOriginalMemberNo && state.editingOriginalMemberNo !== memberNoVal) {
-            window.localStorage.removeItem('ssa_photo:' + state.editingOriginalMemberNo);
-          }
-        } else if (state.editingOriginalMemberNo && state.editingOriginalMemberNo !== memberNoVal) {
-          var existingPhoto = window.localStorage.getItem('ssa_photo:' + state.editingOriginalMemberNo);
-          if (existingPhoto) {
-            window.localStorage.setItem('ssa_photo:' + memberNoVal, existingPhoto);
-            window.localStorage.removeItem('ssa_photo:' + state.editingOriginalMemberNo);
-          }
-        }
-      } catch (err) {}
-
       var member = {
         ID: document.getElementById('mf-id').value || undefined,
         Name: document.getElementById('mf-name').value,
@@ -1419,10 +1698,26 @@
         DueDay: document.getElementById('mf-dueday').value,
         FineAmount: document.getElementById('mf-fine').value
       };
+      
+      // ছবি Firestore-এ সেভ করা হবে (cross-device সাপোর্টের জন্য)
+      if (state.pendingPhotoDataUrl) {
+        member.Photo = state.pendingPhotoDataUrl;
+      } else if (state.editingMemberPhotoDataUrl) {
+        // এডিটের সময় আগের ছবি রাখা
+        member.Photo = state.editingMemberPhotoDataUrl;
+      }
+      
       var isEdit = !!member.ID;
+      var saveBtn = e.target.querySelector('button[type="submit"]');
+      saveBtn.disabled = true; saveBtn.textContent = 'সংরক্ষণ হচ্ছে...';
+      
       api(isEdit ? 'updateMember' : 'addMember', { member: member }).then(function () {
+        saveBtn.disabled = false; saveBtn.textContent = 'সংরক্ষণ করুন';
         document.getElementById('ssa-member-overlay').style.display = 'none';
         loadAll(); 
+      }).catch(function() {
+        saveBtn.disabled = false; saveBtn.textContent = 'সংরক্ষণ করুন';
+        showAlert('সংরক্ষণ করা যায়নি। আবার চেষ্টা করুন।');
       });
     });
 
@@ -1643,6 +1938,8 @@
     document.getElementById('mf-photo-status').textContent = '';
     state.pendingPhotoDataUrl = null;
     state.editingOriginalMemberNo = m ? m.MemberNo : null;
+    // Firestore থেকে আসা বিদ্যমান ছবি ট্র্যাক করা
+    state.editingMemberPhotoDataUrl = m ? (m.Photo || '') : '';
     var mfPreview = document.getElementById('mf-photo-preview');
     var existingPhoto = getMemberPhoto(m);
     if (existingPhoto) { mfPreview.src = existingPhoto; mfPreview.style.display = 'inline-block'; }
