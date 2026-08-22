@@ -27,13 +27,13 @@
 
   <style>
     /* ============================================================
-       প্রিমিয়াম ডার্ক থিম — সপ্তদশ সহযাত্রা
+       প্রিমিয়াম লাইট থিম — সপ্তদশ সহযাত্রা
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0; padding: 0;
-      background: #0D0F1A;
+      background: #F0F4FF;
       min-height: 100vh;
       overflow-x: hidden;
       font-family: 'Tiro Bangla', 'Poppins', serif;
@@ -41,17 +41,17 @@
 
     #ssa-root {
       /* ── Color Tokens ── */
-      --bg:          #0D0F1A;
-      --bg2:         #13162B;
-      --bg3:         #1A1E35;
-      --card:        rgba(26, 30, 53, 0.85);
-      --card-solid:  #1A1E35;
-      --line:        rgba(120,130,200,0.14);
-      --glass-border:rgba(120,130,200,0.22);
+      --bg:          #F0F4FF;
+      --bg2:         #E8EEFF;
+      --bg3:         #F7F9FF;
+      --card:        #FFFFFF;
+      --card-solid:  #FFFFFF;
+      --line:        rgba(99,102,241,0.12);
+      --glass-border:rgba(99,102,241,0.16);
 
-      --ink:         #E8EAF6;
-      --ink-soft:    #8890B5;
-      --ink-muted:   #565E8A;
+      --ink:         #1A1D2E;
+      --ink-soft:    #565D7D;
+      --ink-muted:   #868DAF;
 
       --primary:     #6C63FF;       /* vibrant indigo-violet */
       --primary-glow:rgba(108,99,255,0.35);
@@ -69,10 +69,10 @@
 
       --success:     #00D4AA;
 
-      --glass-shadow: 0 20px 60px -20px rgba(0,0,0,0.7);
+      --glass-shadow: 0 20px 60px -20px rgba(31,41,102,0.14);
 
       font-family: 'Tiro Bangla', 'Poppins', serif;
-      font-size: 16px;
+      font-size: 17.5px;
       line-height: 1.6;
       color: var(--ink);
       background: var(--bg);
@@ -129,10 +129,10 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .ssa-login-sub { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 28px; }
+    .ssa-login-sub { color: var(--ink-soft); font-size: 15.5px; margin: 0 0 28px; }
 
     .ssa-field { text-align: left; margin-bottom: 16px; }
-    .ssa-field label { display: block; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 7px; font-weight: 500; }
+    .ssa-field label { display: block; font-size: 14.5px; color: var(--ink-soft); margin-bottom: 7px; font-weight: 500; }
     .ssa-field input,
     .ssa-field textarea,
     .ssa-field select {
@@ -140,8 +140,8 @@
       padding: 11px 14px;
       border: 1px solid var(--line);
       border-radius: 10px;
-      font-size: 15.5px;
-      background: rgba(255,255,255,.05);
+      font-size: 16.5px;
+      background: var(--bg3);
       color: var(--ink);
       transition: border .2s, background .2s;
     }
@@ -152,13 +152,13 @@
       border-color: var(--primary);
       background: rgba(108,99,255,.08);
     }
-    .ssa-field select option { background: #1A1E35; color: var(--ink); }
+    .ssa-field select option { background: #FFFFFF; color: var(--ink); }
 
     .ssa-login-btn {
       width: 100%; padding: 13px;
       border: none; border-radius: 12px; margin-top: 8px;
       background: linear-gradient(135deg, #7C74FF 0%, #6C63FF 50%, #4A44C4 100%);
-      color: #fff; font-weight: 700; font-size: 17px;
+      color: #fff; font-weight: 700; font-size: 18px;
       letter-spacing: .03em;
       box-shadow: 0 8px 24px -6px rgba(108,99,255,.6);
       transition: transform .15s, box-shadow .15s;
@@ -179,7 +179,7 @@
     .ssa-sidebar {
       width: 250px;
       flex-shrink: 0;
-      background: linear-gradient(175deg, #1C1F38 0%, #141729 60%, #0F1120 100%);
+      background: linear-gradient(175deg, #FFFFFF 0%, #F6F7FE 60%, #F0F2FC 100%);
       border-right: 1px solid var(--line);
       padding: 24px 14px;
       display: flex;
@@ -200,8 +200,8 @@
     }
     .ssa-brand svg { width: 36px; height: 36px; flex-shrink: 0; }
     .ssa-brand-text {
-      font-size: 15.5px; line-height: 1.3; font-weight: 700;
-      background: linear-gradient(135deg, #C0BCFF, #6C63FF);
+      font-size: 16.5px; line-height: 1.3; font-weight: 700;
+      background: linear-gradient(135deg, #7C74FF, #4A44C4);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -215,21 +215,21 @@
       background: transparent;
       color: var(--ink-soft);
       border-radius: 10px;
-      font-size: 15.5px;
+      font-size: 16.5px;
       transition: all .2s;
       position: relative;
     }
     .ssa-nav button:hover { background: rgba(108,99,255,.10); color: var(--ink); }
     .ssa-nav button.active {
-      background: linear-gradient(90deg, rgba(108,99,255,.25), rgba(108,99,255,.10));
-      color: #C0BCFF;
+      background: linear-gradient(90deg, rgba(108,99,255,.16), rgba(108,99,255,.06));
+      color: var(--primary-deep);
       font-weight: 600;
       border-left: 3px solid var(--primary);
     }
 
     .ssa-user-info {
       margin-top: auto;
-      font-size: 13.5px;
+      font-size: 14.5px;
       color: var(--ink-muted);
       padding: 14px 12px 10px;
       border-top: 1px solid var(--line);
@@ -260,8 +260,8 @@
         var(--bg);
       height: 100%;
     }
-    .ssa-page-title { font-size: 26px; color: var(--ink); margin: 0 0 4px; font-weight: 700; }
-    .ssa-page-sub { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 24px; }
+    .ssa-page-title { font-size: 29px; color: var(--ink); margin: 0 0 4px; font-weight: 700; }
+    .ssa-page-sub { color: var(--ink-soft); font-size: 15.5px; margin: 0 0 24px; }
 
     /* ── Stat Cards ── */
     .ssa-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 28px; }
@@ -274,10 +274,10 @@
       overflow: hidden;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 4px 24px -8px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 24px -8px rgba(31,41,102,0.10);
       transition: transform .2s, box-shadow .2s;
     }
-    .ssa-stat:hover { transform: translateY(-2px); box-shadow: 0 8px 32px -8px rgba(0,0,0,0.5); }
+    .ssa-stat:hover { transform: translateY(-2px); box-shadow: 0 8px 32px -8px rgba(31,41,102,0.16); }
     .ssa-stat::before {
       content: '';
       position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
@@ -294,17 +294,17 @@
       transform: translate(30%, -30%);
     }
     .ssa-stat.warn::after { background: radial-gradient(circle, rgba(255,75,107,.2), transparent 70%); }
-    .ssa-stat-label { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; font-weight: 500; position: relative; z-index: 1; }
+    .ssa-stat-label { font-size: 14px; color: var(--ink-soft); margin-bottom: 8px; font-weight: 500; position: relative; z-index: 1; }
     .ssa-stat-value {
-      font-size: 26px; font-weight: 700; color: var(--ink);
+      font-size: 28px; font-weight: 700; color: var(--ink);
       font-family: 'Tiro Bangla','Poppins',serif;
       position: relative; z-index: 1;
     }
 
     /* ── Buttons ── */
     .ssa-btn {
-      border: none; border-radius: 10px; padding: 9px 18px;
-      font-size: 15px; font-weight: 600; cursor: pointer;
+      border: none; border-radius: 10px; padding: 10px 18px;
+      font-size: 16px; font-weight: 600; cursor: pointer;
       transition: all .2s;
       display: inline-flex; align-items: center; justify-content: center; gap: 7px;
     }
@@ -315,11 +315,11 @@
     }
     .ssa-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px -4px rgba(108,99,255,.7); }
     .ssa-btn-ghost {
-      background: rgba(255,255,255,.06);
+      background: var(--bg3);
       border: 1px solid var(--line);
       color: var(--ink-soft);
     }
-    .ssa-btn-ghost:hover { background: rgba(255,255,255,.10); color: var(--ink); }
+    .ssa-btn-ghost:hover { background: rgba(108,99,255,.08); color: var(--ink); }
     .ssa-btn-gold {
       background: var(--gold-soft);
       color: var(--gold-ink);
@@ -332,7 +332,7 @@
       border: 1px solid rgba(255,75,107,.2);
     }
     .ssa-btn-danger:hover { background: rgba(255,75,107,.22); }
-    .ssa-btn-sm { padding: 6px 12px; font-size: 13.5px; border-radius: 8px; }
+    .ssa-btn-sm { padding: 6px 12px; font-size: 14.5px; border-radius: 8px; }
     .ssa-btn-clickable-pill { cursor: pointer; border: none; font-family: inherit; transition: all .2s; }
     .ssa-btn-clickable-pill:hover { transform: scale(1.05); }
 
@@ -343,7 +343,7 @@
       width: 100%; padding: 10px 14px 10px 40px;
       border: 1px solid var(--line);
       border-radius: 10px;
-      font-size: 15.5px;
+      font-size: 16.5px;
       background: var(--bg3);
       color: var(--ink);
       transition: border .2s;
@@ -365,14 +365,14 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
     }
-    table.ssa-table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 15px; }
+    table.ssa-table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 16px; }
     table.ssa-table th {
       text-align: left;
       background: rgba(108,99,255,.10);
-      color: var(--primary);
+      color: var(--primary-deep);
       font-weight: 600;
       padding: 13px 16px;
-      font-size: 13.5px;
+      font-size: 14.5px;
       white-space: nowrap;
       border-bottom: 1px solid var(--line);
       letter-spacing: .02em;
@@ -391,7 +391,7 @@
       background: var(--bg3);
       border: 2px solid var(--line);
     }
-    .ssa-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .ssa-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; white-space: nowrap; }
     .ssa-pill.gold { background: var(--gold-soft); color: var(--gold-ink); border: 1px solid rgba(255,209,102,.2); }
     .ssa-pill.brick { background: var(--danger-soft); color: var(--danger); border: 1px solid rgba(255,75,107,.2); }
     .ssa-actions { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -407,26 +407,26 @@
       -webkit-backdrop-filter: blur(4px);
     }
     .ssa-modal {
-      background: #1D2040;
+      background: #FFFFFF;
       border: 1px solid var(--glass-border);
       width: 100%; max-width: 480px;
       border-radius: 20px;
       padding: 32px;
       max-height: 90vh;
       overflow: auto;
-      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(108,99,255,.15);
+      box-shadow: 0 30px 80px -20px rgba(31,41,102,0.22), 0 0 0 1px rgba(108,99,255,.10);
     }
     .ssa-modal h3 {
       margin: 0 0 22px;
-      font-size: 20px;
-      background: linear-gradient(135deg, #C0BCFF, #6C63FF);
+      font-size: 21px;
+      background: linear-gradient(135deg, #7C74FF, #4A44C4);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .ssa-modal .ssa-field { margin-bottom: 14px; }
     .ssa-modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 26px; }
     .ssa-fine-note {
-      font-size: 14px; color: var(--danger); margin-top: 8px; display: none;
+      font-size: 15px; color: var(--danger); margin-top: 8px; display: none;
       background: var(--danger-soft); padding: 8px 12px; border-radius: 8px;
     }
     .ssa-stmt-modal { max-width: 900px; }
@@ -441,22 +441,22 @@
       backdrop-filter: blur(4px);
     }
     .ssa-dialog {
-      background: #1D2040;
+      background: #FFFFFF;
       border: 1px solid var(--glass-border);
       width: 100%; max-width: 380px;
       border-radius: 20px;
       padding: 28px;
       text-align: center;
-      box-shadow: 0 30px 80px -20px rgba(0,0,0,.8);
+      box-shadow: 0 30px 80px -20px rgba(31,41,102,0.22);
     }
-    .ssa-dialog p { margin: 0 0 24px; font-size: 16px; color: var(--ink); line-height: 1.6; }
+    .ssa-dialog p { margin: 0 0 24px; font-size: 17px; color: var(--ink); line-height: 1.6; }
     .ssa-dialog .ssa-modal-actions { justify-content: center; margin-top: 0; }
 
     /* ── Pagination ── */
     .ssa-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
     .ssa-page-btn {
       padding: 8px 15px; border-radius: 9px; cursor: pointer;
-      font-weight: 500; font-family: inherit; font-size: 14px;
+      font-weight: 500; font-family: inherit; font-size: 15px;
       border: 1px solid var(--line);
       background: var(--bg3);
       color: var(--ink-soft);
@@ -476,18 +476,18 @@
     }
     .ssa-photo-upload-controls { flex: 1; min-width: 0; }
     .ssa-photo-upload-controls input[type="file"] {
-      width: 100%; font-size: 13.5px; color: var(--ink-soft);
+      width: 100%; font-size: 14.5px; color: var(--ink-soft);
       padding: 10px 12px;
       border: 1px dashed var(--line);
       border-radius: 10px;
       background: var(--bg3);
       cursor: pointer;
     }
-    .ssa-photo-status { font-size: 13px; margin-top: 8px; min-height: 15px; }
+    .ssa-photo-status { font-size: 14px; margin-top: 8px; min-height: 15px; }
 
     /* ── Loading/Empty ── */
-    .ssa-empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); font-size: 16px; }
-    .ssa-loading { text-align: center; padding: 60px; color: var(--ink-soft); font-size: 16px; }
+    .ssa-empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); font-size: 17px; }
+    .ssa-loading { text-align: center; padding: 60px; color: var(--ink-soft); font-size: 17px; }
 
     #ssa-print-zone { position: fixed; left: -9999px; top: 0; }
 
@@ -560,7 +560,7 @@
     ══════════════════════════════════════════ */
     @media (max-width: 768px) {
       body { height: 100dvh; overflow: hidden; }
-      #ssa-root { flex-direction: column; height: 100dvh; overflow: hidden; }
+      #ssa-root { flex-direction: column; height: 100dvh; overflow: hidden; font-size: 15px; }
       .ssa-shell { flex-direction: column; height: 100%; flex: 1; }
 
       /* Top Header Bar */
@@ -572,7 +572,7 @@
         align-items: center;
         padding: 10px 16px;
         flex-shrink: 0;
-        background: linear-gradient(90deg, #141729, #1A1E35) !important;
+        background: linear-gradient(90deg, #FFFFFF, #F5F6FE) !important;
         border-right: none;
         border-bottom: 1px solid var(--line);
       }
@@ -584,7 +584,7 @@
       /* Bottom Nav Bar */
       .ssa-nav {
         position: fixed; bottom: 0; left: 0; right: 0;
-        background: rgba(20, 23, 41, 0.95);
+        background: rgba(255, 255, 255, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         display: flex; flex-direction: row;
@@ -593,7 +593,7 @@
         z-index: 1000;
         border-top: 1px solid var(--line);
         border-radius: 20px 20px 0 0;
-        box-shadow: 0 -8px 32px -8px rgba(0,0,0,.5);
+        box-shadow: 0 -8px 32px -8px rgba(31,41,102,0.14);
         margin: 0;
       }
       .ssa-nav button {
